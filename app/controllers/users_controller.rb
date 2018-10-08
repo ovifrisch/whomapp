@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  skip_before_action :verify_authenticity_token
+
+
   def new
     @user = User.new
   end
@@ -14,7 +18,18 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = current_user
+    @users = User.all
+  end
 
+  def update_current_user_location
+    current_user.longitude = params[:longitude]
+    current_user.latitude = params[:latitude]
+    current_user.save
+
+    respond_to do |format|
+      format.json { render :json => {:message => "success"} }
+    end
   end
 
   private
