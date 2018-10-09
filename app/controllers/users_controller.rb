@@ -27,9 +27,11 @@ class UsersController < ApplicationController
   end
 
   def update_current_user_location
-    current_user.longitude = params[:longitude]
-    current_user.latitude = params[:latitude]
-    current_user.save
+    if current_user.id == 1
+      current_user.longitude = params[:longitude]
+      current_user.latitude = params[:latitude]
+      current_user.save
+    end
 
     respond_to do |format|
       format.json { render :json => {:message => "success"} }
@@ -37,10 +39,16 @@ class UsersController < ApplicationController
   end
 
   def get_user_locations
-    @locations = User.select(:longitude, :latitude)
+    @locations = User.select(:id, :longitude, :latitude)
 
     respond_to do |format|
       format.json { render json: @locations }
+    end
+  end
+
+  def get_current_user
+    respond_to do |format|
+      format.json { render json: current_user.id }
     end
   end
 

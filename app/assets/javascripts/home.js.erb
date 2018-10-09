@@ -1,18 +1,41 @@
 var user_lat;
 var user_long;
 var map;
+var current_user_id;
+var me_image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
-function pin_at_position(latitude, longitude) {
+function pin_at_position(user_id, latitude, longitude) {
   loc = {lat: latitude, lng: longitude};
-  marker = new google.maps.Marker({
-    position: loc,
-    map: map
-  })
+  var icon;
+
+  if (user_id == current_user_id) {
+    icon = {
+      url: 'https://www.paraglidingmap.com/app/images/logo.svg',
+      scaledSize: new google.maps.Size(50, 50) // scaled size
+    }
+
+    marker = new google.maps.Marker({
+      position: loc,
+      map: map,
+      icon: icon
+    })
+  }
+  else {
+    icon = {
+        url: 'https://www.chilterns2030s.org.uk/ramblers/images/marker-start.png', // url
+        scaledSize: new google.maps.Size(50, 50) // scaled size
+    };
+    marker = new google.maps.Marker({
+      position: loc,
+      map: map,
+      icon: icon
+    })
+  }
 }
 
 function set_all_pins(locations_hash) {
   for (var i = 0; i < locations_hash.length; i++) {
-    pin_at_position(locations_hash[i].latitude, locations_hash[i].longitude);
+    pin_at_position(locations_hash[i].id, locations_hash[i].latitude, locations_hash[i].longitude);
   }
 }
 
@@ -37,12 +60,21 @@ function init_position_success(user_position) {
   });
   map.setMapTypeId("satellite");
 
-  // make a GET request for all user's locations
-  $.ajax({
-    url: "users/get_user_locations",
+  // make a GET request for the current user's id
+  $.ajax  ({
+    url: "users/get_current_user",
     type: "GET",
     dataType: "json",
-    success: set_all_pins
+    success: function(id) {
+      current_user_id = id;
+      // make a GET request for all user's locations
+      $.ajax({
+        url: "users/get_user_locations",
+        type: "GET",
+        dataType: "json",
+        success: set_all_pins
+      });
+    }
   });
 }
 
