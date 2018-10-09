@@ -10,10 +10,19 @@ function pin_at_position(latitude, longitude) {
   })
 }
 
+function set_all_pins(locations_hash) {
+  for (var i = 0; i < locations_hash.length; i++) {
+    pin_at_position(locations_hash[i].latitude, locations_hash[i].longitude);
+  }
+}
+
 function init_position_success(user_position) {
+
+  //get the current user's location
   user_lat = user_position.coords.latitude;
   user_long = user_position.coords.longitude;
 
+  // update this location in the db with a POST
   $.ajax({
     url: "users/update_current_user_location",
     type: "POST",
@@ -21,14 +30,20 @@ function init_position_success(user_position) {
     data: {longitude: user_long, latitude: user_lat}
   });
 
+  //create the map
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: user_lat, lng: user_long},
     zoom: 14
   });
-
   map.setMapTypeId("satellite");
 
-  pin_at_position(user_lat, user_long);
+  // make a GET request for all user's locations
+  $.ajax({
+    url: "users/get_user_locations",
+    type: "GET",
+    dataType: "json",
+    success: set_all_pins
+  });
 }
 
 function initMap() {

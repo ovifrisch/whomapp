@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -29,6 +33,14 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.json { render :json => {:message => "success"} }
+    end
+  end
+
+  def get_user_locations
+    @locations = User.select(:longitude, :latitude)
+
+    respond_to do |format|
+      format.json { render json: @locations }
     end
   end
 
