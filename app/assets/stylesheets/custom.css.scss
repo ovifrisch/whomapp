@@ -1,2 +1,13 @@
+.center {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.jumbotron {
+  background-image: asset-url('home_img2.jpeg');
+  background-size: cover;
+  height: 100%;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
