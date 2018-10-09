@@ -4,10 +4,16 @@ var map;
 var current_user_id;
 var me_image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
+function click_marker(marker) {
+  console.log(marker.user_id);
+}
+
 function pin_at_position(user_id, latitude, longitude) {
   loc = {lat: latitude, lng: longitude};
   var icon;
+  var marker;
 
+  // if this is the current user
   if (user_id == current_user_id) {
     icon = {
       url: 'https://www.paraglidingmap.com/app/images/logo.svg',
@@ -17,9 +23,12 @@ function pin_at_position(user_id, latitude, longitude) {
     marker = new google.maps.Marker({
       position: loc,
       map: map,
-      icon: icon
+      icon: icon,
+      user_id: user_id
     })
   }
+
+  //if it's anyone else
   else {
     icon = {
         url: 'https://www.chilterns2030s.org.uk/ramblers/images/marker-start.png', // url
@@ -28,9 +37,14 @@ function pin_at_position(user_id, latitude, longitude) {
     marker = new google.maps.Marker({
       position: loc,
       map: map,
-      icon: icon
+      icon: icon,
+      title: "Click to Chat!",
+      user_id: user_id
     })
   }
+  marker.addListener('click', function() {
+    click_marker(marker);
+  });
 }
 
 function set_all_pins(locations_hash) {
