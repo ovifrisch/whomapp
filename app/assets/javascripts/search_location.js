@@ -10,6 +10,7 @@ $(document).ready(function() {
       latitude = results[0].geometry.location.lat();
       longitude = results[0].geometry.location.lng();
       map.setCenter({lat: latitude, lng: longitude});
+      map.setZoom(12);
     });
   })
 
