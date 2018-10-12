@@ -10,6 +10,17 @@
   display:none;
 }
 
+#chat_footer {
+  position: absolute;
+  top: 96.5%;
+  left: 85.4%;
+  z-index: 99;
+}
+
+#all_convos_btn {
+  width: 250%
+}
+
 /* Optional: Makes the sample page fill the window. */
 html, body {
   height: 100%;
