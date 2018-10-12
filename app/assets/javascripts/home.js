@@ -2,7 +2,6 @@ var user_lat;
 var user_long;
 var map;
 var current_user_id;
-var me_image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
 function click_marker(marker) {
   console.log(marker.user_id);
@@ -70,7 +69,10 @@ function init_position_success(user_position) {
   //create the map
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: user_lat, lng: user_long},
-    zoom: 14
+    zoom: 14,
+    zoomControl: false,
+    streetViewControl: false,
+    fullscreenControl: false
   });
   map.setMapTypeId("satellite");
 

@@ -2,7 +2,12 @@
  * element that contains the map. */
 #map {
   margin-top: 52px;
-  height: 100%;
+  height: 93%;
+}
+
+//remove terms of use
+.gm-style-cc {
+  display:none;
 }
 
 /* Optional: Makes the sample page fill the window. */
