@@ -2,7 +2,7 @@
  * element that contains the map. */
 #map {
   margin-top: 52px;
-  height: 93%;
+  height: 85%;
 }
 
 //remove terms of use
@@ -10,16 +10,44 @@
   display:none;
 }
 
-#chat_footer {
-  position: absolute;
-  top: 96.5%;
-  left: 85.4%;
-  z-index: 99;
+.chat_footer {
+  height: 15%;
 }
 
-#all_convos_btn {
-  width: 250%
+.all_outgoing_chats {
+  width: 10%;
+  height: 100%;
+  float: left;
 }
+
+#chat1 {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
+
+// #chat_footer {
+//   position: absolute;
+//   top: 96.5%;
+//   right: 85.4%;
+//   z-index: 99;
+//   float: left;
+// }
+//
+// #open_chats {
+//   float: left;
+// }
+//
+// .chat1 {
+//   display: inline-block;
+//   height: 90px;
+//   z-index: 99;
+//   float: left;
+// }
+//
+// #all_convos_btn {
+//   width: 250%
+// }
 
 /* Optional: Makes the sample page fill the window. */
 html, body {

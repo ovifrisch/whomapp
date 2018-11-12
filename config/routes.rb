@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'signup', to: 'users#new'
   post 'users/update_current_user_location', to: 'users#update_current_user_location'
+  post 'conversations/create_conversation', to: 'conversations#create_conversation'
   get 'users/get_user_locations', to: 'users#get_user_locations'
   get 'users/get_current_user', to: 'users#get_current_user'
   resources :users, except: [:new]

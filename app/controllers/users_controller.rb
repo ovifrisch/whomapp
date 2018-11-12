@@ -24,14 +24,13 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @users = User.all
+    @user_conversations = @user.conversations
   end
 
   def update_current_user_location
-    if current_user.id == 1
-      current_user.longitude = params[:longitude]
-      current_user.latitude = params[:latitude]
-      current_user.save
-    end
+    current_user.longitude = params[:longitude]
+    current_user.latitude = params[:latitude]
+    current_user.save
 
     respond_to do |format|
       format.json { render :json => {:message => "success"} }

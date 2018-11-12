@@ -4,7 +4,7 @@ var map;
 var current_user_id;
 
 function click_marker(marker) {
-  console.log(marker.user_id);
+  create_conversation(marker.user_id)
 }
 
 function pin_at_position(user_id, latitude, longitude) {
@@ -72,9 +72,9 @@ function init_position_success(user_position) {
     zoom: 14,
     zoomControl: false,
     streetViewControl: false,
-    fullscreenControl: false
+    fullscreenControl: false,
+    mapTypeId: google.maps.MapTypeId.HYBRID
   });
-  map.setMapTypeId("satellite");
 
   // make a GET request for the current user's id
   $.ajax  ({
@@ -100,25 +100,25 @@ function initMap() {
 
 
 $(document).ready(function(){
-  $("#test_btn").click(function() {
-    //draw a line between 400 Ortega Avenue and 164 Orchard Park Drive
-
-    // need to make a geocoding request
-    coords = [
-      {lat: 38.541383, lng: -121.761078},
-      {lat: 14.259155, lng: -3.389085}
-    ];
-
-    line = new google.maps.Polyline({
-      path: coords,
-      geodesic: true,
-      strokeColor: '#FF0000',
-      strokeOpacity: 1.0,
-      strokeWeight: 2
-    });
-
-    line.setMap(map);
-  })
+  // $("#test_btn").click(function() {
+  //   //draw a line between 400 Ortega Avenue and 164 Orchard Park Drive
+  //
+  //   // need to make a geocoding request
+  //   coords = [
+  //     {lat: 38.541383, lng: -121.761078},
+  //     {lat: 14.259155, lng: -3.389085}
+  //   ];
+  //
+  //   line = new google.maps.Polyline({
+  //     path: coords,
+  //     geodesic: true,
+  //     strokeColor: '#FF0000',
+  //     strokeOpacity: 1.0,
+  //     strokeWeight: 2
+  //   });
+  //
+  //   line.setMap(map);
+  // })
 
   $("#home_btn").click(function() {
     map.setCenter({lat: user_lat, lng: user_long});
