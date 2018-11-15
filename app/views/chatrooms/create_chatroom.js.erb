@@ -1,2 +1,2 @@
-html = '<div class = "chatbox_chat"><button class="chatbox_chat_btn"><%=@cru2.user.username%></button></div>'
+html = '<div class = "chatbox_chat"><button class="chatbox_chat_btn" id="chat<%=chat.id%>" onclick="chatbox_chat_clicked(this)"><%=chat.users[1].username%></button></div>'
 $("#chatbox_chat_wrap").append(html);

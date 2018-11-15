@@ -78,6 +78,12 @@ class ChatroomsController < ApplicationController
     chatroom.save
     @cru1.save
     @cru2.save
+
+    #goes to views/chatrooms/create_chatrooms.js.erb
+  end
+
+  def show_chat_window
+    @chatroom = Chatroom.find(params[:chat_id])
   end
 
   private

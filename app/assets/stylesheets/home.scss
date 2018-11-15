@@ -29,7 +29,7 @@
 }
 
 .chatbox_chat {
-  width: 100%
+  width: 100%;
 }
 
 .chatbox_chat_btn {
@@ -58,14 +58,60 @@
   left: 10px;
 }
 
-#all_chat_btn {
-
-}
-
 #close_all_chat_btn {
   float: right;
   height: 90%;
 }
+
+
+.collapse_chat_btn {
+  display: none;
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  z-index: 99;
+  bottom: 0px;
+  left: 200px;
+}
+
+.one_chat_open {
+  display: none;
+  width: 200px;
+  height: 250px;
+  position: absolute;
+  bottom: 0px;
+  left: 200px;
+  z-index: 99;
+  border: 2px solid black;
+  background-color: white;
+}
+
+.messages_header {
+  height: 10%;
+  border: 1px solid black;
+}
+
+.close_chat_btn {
+  float: left;
+  height: 90%;
+}
+
+.toggle_chat_btn {
+  float: right;
+  height: 90%;
+}
+
+
+.messages_container {
+  height: 80%;
+  overflow-y: scroll;
+}
+
+.new_messages_container {
+  height: 10%;
+  border: 1px solid black;
+}
+
 
 //remove terms of use
 .gm-style-cc {

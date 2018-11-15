@@ -1,0 +1,5 @@
+// temporary. later append to whichever is available, if any
+
+// right now we're just appending whatever the user clicks to the first block
+document.getElementById("one_chat_open1").style.display = "block";
+$("#one_chat_open1").append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");

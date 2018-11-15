@@ -16,7 +16,7 @@
       <div id="chatbox_chat_wrap">
         <% @user_chatrooms.each do |chat| %>
           <div class="chatbox_chat">
-            <button class="chatbox_chat_btn"><%=chat.users[1].username%></button>
+            <button class="chatbox_chat_btn" id="chat<%=chat.id%>" onclick="chatbox_chat_clicked(this)"><%=chat.users[1].username%></button>
           </div>
         <% end %>
       </div>
@@ -24,6 +24,8 @@
         <input type="text" id="chat_search" placeholder="Search">
       </div>
     </div>
+    <button class="collapse_chat_btn" id="collapse_chat_btn1" onclick="openChat(this)">some chat</button>
+    <div class="one_chat_open" id="one_chat_open1"></div>
     <div>
     <!-- <button type="button" id="test_btn">Click Me!</button> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMmmqjRIzq8wk25dtNqId-hkqblHkOKs8&callback=initMap"

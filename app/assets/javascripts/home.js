@@ -2,6 +2,7 @@ var user_lat;
 var user_long;
 var map;
 var current_user_id;
+var test = 8
 
 function click_marker(marker) {
   create_conversation(marker.user_id)

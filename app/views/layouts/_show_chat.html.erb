@@ -1,0 +1,14 @@
+<div class="messages_header">
+  <button class="close_chat_btn" onclick="close_chat(this)">X</button>
+  <button class="toggle_chat_btn" onclick="toggle_chat(this)">-</button>
+</div>
+
+<div class="messages_container">
+  <% 1.upto(100) do %>
+    <div><strong><%= @chatroom.users[1].username %>:</strong>Hello world!</div>
+  <% end %>
+</div>
+
+ <div class="new_messages_container">
+
+ </div>
