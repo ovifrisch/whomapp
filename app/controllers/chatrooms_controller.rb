@@ -1,7 +1,6 @@
 class ChatroomsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_chatroom, only: [:show, :edit, :update, :destroy]
-  respond_to :js, :html, :json
 
   # GET /chatrooms
   # GET /chatrooms.json
@@ -68,21 +67,17 @@ class ChatroomsController < ApplicationController
 
     chatroom = Chatroom.new()
 
-    cru1 = ChatroomUser.new()
-    cru1.user = current_user
-    cru1.chatroom = chatroom
+    @cru1 = ChatroomUser.new()
+    @cru1.user = current_user
+    @cru1.chatroom = chatroom
 
-    cru2 = ChatroomUser.new()
-    cru2.user = User.find(params[:user])
-    cru2.chatroom = chatroom
+    @cru2 = ChatroomUser.new()
+    @cru2.user = User.find(params[:user])
+    @cru2.chatroom = chatroom
 
     chatroom.save
-    cru1.save
-    cru2.save
-
-    respond_to do |format|
-      format.html {render json: {location: users_path}}
-    end
+    @cru1.save
+    @cru2.save
   end
 
   private

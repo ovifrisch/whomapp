@@ -2,11 +2,8 @@ function create_conversation(user_id) {
   $.ajax({
     url: "chatrooms/create_chatroom",
     type: "POST",
-    dataType:"json",
-    data: {user: user_id},
-    success: function(result) {
-      window.location = result.location;
-    }
+    dataType:"script",
+    data: {user: user_id}
   });
 }
 
