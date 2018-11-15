@@ -1,8 +1,54 @@
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
+
 #map {
-  margin-top: 52px;
-  height: 85%;
+  height: 100%;
+  display: block;
+  position: fixed;
+}
+
+#all_chats_titlebar {
+  height: 5%;
+  border: 1px solid black;
+}
+
+#chatbox_chat_wrap {
+  height: 95%;
+  overflow-y: scroll;
+}
+
+.chatbox_chat {
+
+}
+
+#all_chats_box {
+  display: none;
+  width: 150px;
+  height: 500px;
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  z-index: 99;
+  border: 5px solid black;
+  background-color: white;
+}
+
+#all_chat_btn {
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  z-index: 99;
+  bottom: 0px;
+  left: 10px;
+}
+
+#all_chat_btn {
+
+}
+
+#close_all_chat_btn {
+  float: right;
+  height: 90%;
 }
 
 //remove terms of use
@@ -10,50 +56,12 @@
   display:none;
 }
 
-.chat_footer {
-  height: 15%;
-}
 
-.all_outgoing_chats {
-  width: 10%;
-  height: 100%;
-  float: left;
-}
-
-#chat1 {
-  width: 10%;
-  height: 100%;
-  float: left;
-}
-
-// #chat_footer {
-//   position: absolute;
-//   top: 96.5%;
-//   right: 85.4%;
-//   z-index: 99;
-//   float: left;
-// }
-//
-// #open_chats {
-//   float: left;
-// }
-//
-// .chat1 {
-//   display: inline-block;
-//   height: 90px;
-//   z-index: 99;
-//   float: left;
-// }
-//
-// #all_convos_btn {
-//   width: 250%
-// }
 
 /* Optional: Makes the sample page fill the window. */
 html, body {
   height: 100%;
-  margin: 0;
-  padding: 0;
+  width: 100%;
 }
 
 .login_btn {

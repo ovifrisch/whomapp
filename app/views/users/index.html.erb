@@ -6,27 +6,41 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <%= render 'layouts/navigation' %>
-    <div id="map" class="map"></div>
+    <%= render 'layouts/navigation'%>
+    <div id="map"></div>
+    <button id="all_chat_btn" onclick="open_all_chats()">All Chats</button>
+    <div id="all_chats_box">
+      <div id="all_chats_titlebar">
+        <button id="close_all_chat_btn" onclick="close_all_chats()">X</button>
+      </div>
+      <div id="chatbox_chat_wrap">
+        <% @user_chatrooms.each do |chat| %>
+          <div class="chatbox_chat">
+            <p><%=chat.users[1].username%></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div>
     <!-- <button type="button" id="test_btn">Click Me!</button> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMmmqjRIzq8wk25dtNqId-hkqblHkOKs8&callback=initMap"
     async defer></script>
-    <div class="chat_footer">
-      <div class="all_outgoing_chats">
 
-      </div>
-      <div id="chat1">
-        
-      </div>
-    </div>
   </body>
 </html>
+      <!-- <div id="chat1">
+        <% if @user_chatrooms.first != nil%>
+          <button class="open-button" onclick="openForm1()"><%= @user_chatrooms.first.users[1].username%></button>
 
-<!-- <div id="chat_footer">
-  <button type="button" id="all_convos_btn" onclick="alert('Hello world!')">All Chats</button>
-</div>
-<div id="open_chats">
-  <div class="chat1">
-    <button id="btn1">Chat</button>
-  </div>
-</div> -->
+          <div class="chat1-popup", id="myForm">
+            <div class="form-container">
+              <h1>Chat</h1>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div id="chat2">
+        <% if @user_chatrooms.second != nil %>
+          <button class="open-button" onclick="openForm2()"><%= @user_chatrooms.second.users[1].username%></button>
+        <% end %>
+      </div> -->

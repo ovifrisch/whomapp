@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_and_belongs_to_many :conversations
+  has_many :chatroom_users
+  has_many :chatrooms, through: :chatroom_users
   has_many :messages
 
   validates :username, presence: true, uniqueness: {case_sensitive: false},

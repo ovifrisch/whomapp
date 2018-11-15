@@ -24,7 +24,8 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @users = User.all
-    @user_conversations = @user.conversations
+
+    @user_chatrooms = @user.chatrooms
   end
 
   def update_current_user_location
