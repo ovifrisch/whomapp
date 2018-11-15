@@ -13,12 +13,28 @@
 }
 
 #chatbox_chat_wrap {
-  height: 95%;
+  height: 88%;
   overflow-y: scroll;
 }
 
-.chatbox_chat {
+#chatbox_search {
+  width: 100%;
+  height: 7%;
+  border: 1px solid black;
+}
 
+#chat_search {
+  width: 100%;
+  height: 100%;
+}
+
+.chatbox_chat {
+  width: 100%
+}
+
+.chatbox_chat_btn {
+  text-align: center;
+  width: 100%;
 }
 
 #all_chats_box {

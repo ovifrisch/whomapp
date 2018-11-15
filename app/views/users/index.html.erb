@@ -16,9 +16,12 @@
       <div id="chatbox_chat_wrap">
         <% @user_chatrooms.each do |chat| %>
           <div class="chatbox_chat">
-            <p><%=chat.users[1].username%></p>
+            <button class="chatbox_chat_btn"><%=chat.users[1].username%></button>
           </div>
         <% end %>
+      </div>
+      <div id="chatbox_search">
+        <input type="text" id="chat_search" placeholder="Search">
       </div>
     </div>
     <div>

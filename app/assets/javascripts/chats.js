@@ -1,17 +1,4 @@
-num_open_chats = 0
-max_open_chats = 2
-
-function increment_open_chats() {
-  if (num_open_chats == max_open_chats) {
-    return
-  }
-  else {
-    num_open_chats += 1
-  }
-}
-
 function create_conversation(user_id) {
-  increment_open_chats()
   $.ajax({
     url: "chatrooms/create_chatroom",
     type: "POST",

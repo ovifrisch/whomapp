@@ -1,6 +1,7 @@
 class ChatroomsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_chatroom, only: [:show, :edit, :update, :destroy]
+  respond_to :js, :html, :json
 
   # GET /chatrooms
   # GET /chatrooms.json
