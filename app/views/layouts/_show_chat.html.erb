@@ -15,12 +15,12 @@
   </div>
 
   <div class="messages_container">
-    <% @chatroom.messages.order(created_at: :desc).limit(100).reverse.each do |message|%>
+    <% @messages.each do |message|%>
       <div><strong><%= message.user.username%>:</strong><%= message.body %></div>
     <% end %>
   </div>
   <div class="new_messages_container">
-    <%= form_for [@chatroom, Message.new] do |f| %>
+    <%= form_for [@chatroom, Message.new], remote: true, :html => {:id => "new_message_#{@chatroom.id}"} do |f| %>
       <%= f.text_field :body, rows: 1, class:"form-control" %>
     <% end %>
   </div>

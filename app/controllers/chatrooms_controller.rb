@@ -84,6 +84,7 @@ class ChatroomsController < ApplicationController
 
   def show_chat_window
     @chatroom = Chatroom.find(params[:chat_id])
+    @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
   end
 
   private
