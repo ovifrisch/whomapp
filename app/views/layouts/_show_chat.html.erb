@@ -1,10 +1,15 @@
-<button class="collapse_chat_btn" style="display: none;" onclick="openChat(this)"><%=@chatroom.users[1].username%></button>
+<!-- <button class="collapse_chat_btn" style="display: none;" onclick="openChat(this)"><%=@chatroom.users[1].username%></button> -->
 
-
+<div class="collapse_chat_container" style="display: none;">
+  <button class="collapse_chat_togggle_open" onclick="openChat(this)">
+    <%=@chatroom.users[1].username%>
+  </button>
+  <button class="collapse_chat_close" onclick="close_chat(this.parentElement.parentElement)">X</button>
+</div>
 
 <div class="one_chat_open" style="display: block;">
   <div class="messages_header">
-    <button class="close_chat_btn" onclick="close_chat(this)">X</button>
+    <button class="close_chat_btn" onclick="close_chat(this.parentElement.parentElement.parentElement)">X</button>
     <button class="toggle_chat_btn" onclick="toggle_chat(this)">-</button>
   </div>
 

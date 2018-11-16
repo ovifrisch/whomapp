@@ -26,8 +26,8 @@ function toggle_all_chats() {
 
 //CLICK BOTTOM HIDDEN CHAT
 function openChat(el) {
-  $(el).css("display", "none");
-  $(el).parents().eq(0).children().eq(1).css("display", "block");
+  $(el).parents().eq(0).css("display", "none");
+  $(el).parents().eq(1).children().eq(1).css("display", "block");
 }
 
 //CLICK SIDE BAR CHAT
@@ -44,13 +44,12 @@ function chatbox_chat_clicked(el) {
 
 //CLICK CLOSE IN CHAT WINDOW
 function close_chat(el) {
-  position = Number($(el).parents().eq(2).attr("id").substr(-1))
+  position = Number($(el).attr("id").substr(-1))
+  $(el).empty()
   for (var i = position + 1; i <= num_open_chats; i++) {
     slide_chat(i, i - 1);
   }
-  $(el).parents().eq(2).empty()
   num_open_chats -= 1
-
 }
 
 //CLICK TOGGLE IN CHAT WINDOW

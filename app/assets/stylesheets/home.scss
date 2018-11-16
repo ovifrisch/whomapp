@@ -68,7 +68,6 @@
   bottom: 0px;
   left: 200px;
   z-index: 99;
-  border: 2px solid black;
   width: 200px;
   height: 250px;
 }
@@ -78,7 +77,6 @@
   bottom: 0px;
   left: 400px;
   z-index: 99;
-  border: 2px solid black;
   width: 200px;
   height: 250px;
 }
@@ -88,7 +86,6 @@
   bottom: 0px;
   left: 600px;
   z-index: 99;
-  border: 2px solid black;
   width: 200px;
   height: 250px;
 }
@@ -98,7 +95,6 @@
   bottom: 0px;
   left: 800px;
   z-index: 99;
-  border: 2px solid black;
   width: 200px;
   height: 250px;
 }
@@ -108,7 +104,6 @@
   bottom: 0px;
   left: 1000px;
   z-index: 99;
-  border: 2px solid black;
   width: 200px;
   height: 250px;
 }
@@ -123,6 +118,31 @@
   left: 0px;
   z-index: 99;
 }
+
+.collapse_chat_container {
+  display: none;
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  z-index: 99;
+}
+
+.collapse_chat_togggle_open {
+  width: 80%;
+  height: 100%;
+  position: absolute;
+}
+
+.collapse_chat_close {
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+}
+
+
 
 .one_chat_open {
   display: none;
