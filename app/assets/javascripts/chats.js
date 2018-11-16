@@ -66,6 +66,17 @@ function slide_chat(idx_from, idx_to) {
   $('#' + dest).empty()
   $('#' + dest).append($('#' + src).html())
   $('#' + src).empty()
+}
 
-
+function go_to_user(id) {
+  $.ajax({
+    url: "users/get_user_location",
+    type: "GET",
+    data: {id: id},
+    dataType:"json",
+    success: function(loc) {
+      map.setZoom(14);
+      map.panTo({lat: loc.lat, lng: loc.long});
+    }
+  });
 }

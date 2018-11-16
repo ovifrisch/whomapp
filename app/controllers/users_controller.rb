@@ -39,16 +39,25 @@ class UsersController < ApplicationController
   end
 
   def get_user_locations
-    @locations = User.select(:id, :longitude, :latitude)
+    locations = User.select(:id, :longitude, :latitude)
 
     respond_to do |format|
-      format.json { render json: @locations }
+      format.json { render json: locations }
     end
   end
 
   def get_current_user
     respond_to do |format|
       format.json { render json: current_user.id }
+    end
+  end
+
+  def get_user_location
+    user = User.find(params[:id])
+    location = {long:user.longitude, lat:user.latitude}
+
+    respond_to do |format|
+      format.json {render json: location}
     end
   end
 

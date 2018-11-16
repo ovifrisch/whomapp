@@ -121,9 +121,11 @@ $(document).ready(function(){
   //   line.setMap(map);
   // })
 
-  $("#home_btn").click(function() {
-    map.setCenter({lat: user_lat, lng: user_long});
-  })
 
+
+  $("#home_btn").click(function() {
+    map.setZoom(14);
+    map.panTo({lat: user_lat, lng: user_long});
+  })
 
 });

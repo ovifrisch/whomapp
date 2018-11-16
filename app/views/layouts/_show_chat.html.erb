@@ -11,14 +11,21 @@
   <div class="messages_header">
     <button class="close_chat_btn" onclick="close_chat(this.parentElement.parentElement.parentElement)">X</button>
     <button class="toggle_chat_btn" onclick="toggle_chat(this)">-</button>
+    <p class="messages_header_username" onclick="go_to_user(<%= @chatroom.users[1].id%>)"><%= @chatroom.users[1].username %></p>
   </div>
 
   <div class="messages_container">
-    <% 1.upto(100) do %>
-      <div><strong><%= @chatroom.users[1].username %>:</strong>Hello world!</div>
+    <% @chatroom.messages.order(created_at: :desc).limit(100).reverse.each do |message|%>
+      <div><strong><%= message.user.username%>:</strong><%= message.body %></div>
     <% end %>
   </div>
-   <div class="new_messages_container">
-
-   </div>
+  <div class="new_messages_container">
+    <%= form_for [@chatroom, Message.new] do |f| %>
+      <%= f.text_field :body, rows: 1, class:"form-control" %>
+    <% end %>
+  </div>
 </div>
+
+<!-- <% 1.upto(100) do %>
+  <div><strong><%= @chatroom.users[1].username %>:</strong>Hello world!</div>
+<% end %> -->

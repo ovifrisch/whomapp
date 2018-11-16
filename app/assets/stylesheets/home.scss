@@ -164,11 +164,22 @@
 .close_chat_btn {
   float: left;
   height: 90%;
+  width: 10%;
 }
 
 .toggle_chat_btn {
   float: right;
   height: 90%;
+  width: 10%;
+}
+
+.messages_header_username {
+  text-align:center;
+  width: 80%;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 
@@ -180,6 +191,10 @@
 .new_messages_container {
   height: 10%;
   border: 1px solid black;
+}
+
+.chat_message_field {
+  width: 100%;
 }
 
 
