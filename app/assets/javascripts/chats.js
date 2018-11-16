@@ -1,5 +1,8 @@
+const max_open_chats = 5
+var num_open_chats = 0
 
 
+// CLICK USER ON MAP
 function create_conversation(user_id) {
   $.ajax({
     url: "chatrooms/create_chatroom",
@@ -9,47 +12,61 @@ function create_conversation(user_id) {
   });
 }
 
+//CLICK OPEN SIDEBAR
 function open_all_chats() {
-  document.getElementById("all_chat_btn").style.display = "none";
-
-  document.getElementById("all_chats_box").style.display = "block";
+  $("#all_chat_btn").css("display", "none");
+  $("#all_chats_box").css("display", "block");
 }
 
-function close_all_chats() {
-  document.getElementById("all_chats_box").style.display = "none";
-  document.getElementById("all_chat_btn").style.display = "block";
+//CLICK CLOSE SIDE BAR
+function toggle_all_chats() {
+  $("#all_chats_box").css("display", "none");
+  $("#all_chat_btn").css("display", "block");
 }
 
-function openChat(element) {
-  element.style.display = "none";
-  document.getElementById("one_chat_open1").style.display = "block";
+//CLICK BOTTOM HIDDEN CHAT
+function openChat(el) {
+  $(el).css("display", "none");
+  $(el).parents().eq(0).children().eq(1).css("display", "block");
 }
 
-function chatbox_chat_clicked(chat_macro) {
-  chat_id = Number(chat_macro.id.substring(4,));
-  console.log(chat_id)
+//CLICK SIDE BAR CHAT
+function chatbox_chat_clicked(el) {
+  id = Number($(el).attr("id").substring(4,));
 
   $.ajax({
     url: "chatrooms/show_chat_window",
     type: "POST",
     dataType: "script",
-    data: {chat_id: chat_id}
+    data: {chat_id: id}
   })
 }
 
-function close_chat(element) {
-  root = element.parentElement.parentElement;
-  // element.parentElement.parentElement.style.display = "none";
-  while (root.firstChild) {
-    root.removeChild(root.firstChild);
+//CLICK CLOSE IN CHAT WINDOW
+function close_chat(el) {
+  position = Number($(el).parents().eq(2).attr("id").substr(-1))
+  for (var i = position + 1; i <= num_open_chats; i++) {
+    slide_chat(i, i - 1);
   }
-  root.style.display = "none";
+  $(el).parents().eq(2).empty()
+  num_open_chats -= 1
+
 }
 
-function toggle_chat(element) {
-  //this is temporary.
+//CLICK TOGGLE IN CHAT WINDOW
+function toggle_chat(el) {
+  $(el).parents().eq(1).css("display", "none");
+  $(el).parents().eq(2).children().first().css("display", "block");
+}
 
-  root = element.parentElement.parentElement;
-  root.style.display = "none";
-  document.getElementById("collapse_chat_btn1").style.display = "block";
+// MOVE THE CONTENT OF #(chat_wrapper<idx_from>) to #(chat_wrapper<idx_to>)
+function slide_chat(idx_from, idx_to) {
+  src = "chat_wrapper" + idx_from
+  dest = "chat_wrapper" + idx_to
+
+  $('#' + dest).empty()
+  $('#' + dest).append($('#' + src).html())
+  $('#' + src).empty()
+
+
 }

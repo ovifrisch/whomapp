@@ -1,5 +1,20 @@
 // temporary. later append to whichever is available, if any
 
 // right now we're just appending whatever the user clicks to the first block
-document.getElementById("one_chat_open1").style.display = "block";
-$("#one_chat_open1").append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");
+if (num_open_chats < max_open_chats) {
+  num_open_chats += 1;
+  $("#chat_wrapper" + num_open_chats).append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");
+}
+
+
+
+// if (num_open_chats < max_open_chats) {
+//   for (var i = num_open_chats; i >= 1; i--) {
+//     slide_chat(i, i + 1);
+//   }
+//
+//   $("#chat_wrapper1").append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");
+//
+//   num_open_chats += 1
+//   // remember to also decrement this when you close a chat window
+// }

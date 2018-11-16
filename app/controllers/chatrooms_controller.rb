@@ -65,17 +65,17 @@ class ChatroomsController < ApplicationController
   def create_chatroom
     # restrict the chatrooms u can create. like cant create the same one again
 
-    chatroom = Chatroom.new()
+    @chatroom = Chatroom.new()
 
     @cru1 = ChatroomUser.new()
     @cru1.user = current_user
-    @cru1.chatroom = chatroom
+    @cru1.chatroom = @chatroom
 
     @cru2 = ChatroomUser.new()
     @cru2.user = User.find(params[:user])
-    @cru2.chatroom = chatroom
+    @cru2.chatroom = @chatroom
 
-    chatroom.save
+    @chatroom.save
     @cru1.save
     @cru2.save
 
