@@ -14,9 +14,9 @@
     <p class="messages_header_username" onclick="go_to_user(<%= @chatroom.users[1].id%>)"><%= @chatroom.users[1].username %></p>
   </div>
 
-  <div class="messages_container">
+  <div class="messages_container" id="messages_container_<%= @chatroom.id %>">
     <% @messages.each do |message|%>
-      <div><strong><%= message.user.username%>:</strong><%= message.body %></div>
+      <%= render message %>
     <% end %>
   </div>
   <div class="new_messages_container">

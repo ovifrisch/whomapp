@@ -1,0 +1,7 @@
+51207:C 16 Nov 01:41:02.071 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+51207:C 16 Nov 01:41:02.071 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=51207, just started
+51207:C 16 Nov 01:41:02.071 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+51207:M 16 Nov 01:41:02.072 * Increased maximum number of open files to 10032 (it was originally set to 256).
+51207:M 16 Nov 01:41:02.076 * Running mode=standalone, port=6379.
+51207:M 16 Nov 01:41:02.076 # Server initialized
+51207:M 16 Nov 01:41:02.076 * Ready to accept connections
