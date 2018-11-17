@@ -14,30 +14,12 @@ App.cable.subscriptions.create({channel: "ChatroomsChannel", room: "chatrooms:<%
   }
 }
 );
-    // Called when there's incoming data on the websocket for this channel
 
-// cable.subscriptions.create({channel: "ChatroomsChannel", room: "chatrooms:<%=@chatroom.id%>"},
-// received = function(data) {
-//     console.log(data)
-//     console.log("good")
-//     $("#messages_container_#{data.chatroom_id}").append(data.message)
-// })
 html = '<div class = "chatbox_chat"><button class="chatbox_chat_btn" id="chat<%=@chatroom.id%>" onclick="chatbox_chat_clicked(this)"><%=@chatroom.users[1].username%></button></div>'
 $("#chatbox_chat_wrap").append(html);
 
 if (num_open_chats < max_open_chats) {
   num_open_chats += 1;
   $("#chat_wrapper" + num_open_chats).append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");
+  $("#chat_wrapper" + num_open_chats).css("visibility", "visible");
 }
-
-//slide all chat windows to the right, starting from the end
-// if (num_open_chats < max_open_chats) {
-//   for (var i = num_open_chats; i >= 1; i--) {
-//     slide_chat(i, i + 1);
-//   }
-//
-//   $("#chat_wrapper1").append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");
-//
-//   num_open_chats += 1
-//   // remember to also decrement this when you close a chat window
-// }
