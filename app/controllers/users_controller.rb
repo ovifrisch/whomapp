@@ -29,6 +29,10 @@ class UsersController < ApplicationController
   end
 
   def update_current_user_location
+    if current_user.id == 1
+      return
+    end
+
     current_user.longitude = params[:longitude]
     current_user.latitude = params[:latitude]
     current_user.save

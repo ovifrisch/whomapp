@@ -5,3 +5,15 @@
 51207:M 16 Nov 01:41:02.076 * Running mode=standalone, port=6379.
 51207:M 16 Nov 01:41:02.076 # Server initialized
 51207:M 16 Nov 01:41:02.076 * Ready to accept connections
+54205:C 16 Nov 13:53:57.462 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+54205:C 16 Nov 13:53:57.463 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=54205, just started
+54205:C 16 Nov 13:53:57.463 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+54205:M 16 Nov 13:53:57.465 * Increased maximum number of open files to 10032 (it was originally set to 256).
+54205:M 16 Nov 13:53:57.465 # Creating Server TCP listening socket *:6379: bind: Address already in use
+57930:C 16 Nov 17:10:30.470 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+57930:C 16 Nov 17:10:30.471 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=57930, just started
+57930:C 16 Nov 17:10:30.471 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+57930:M 16 Nov 17:10:30.473 * Increased maximum number of open files to 10032 (it was originally set to 256).
+57930:M 16 Nov 17:10:30.476 * Running mode=standalone, port=6379.
+57930:M 16 Nov 17:10:30.476 # Server initialized
+57930:M 16 Nov 17:10:30.476 * Ready to accept connections
