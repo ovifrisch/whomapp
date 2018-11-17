@@ -63,10 +63,26 @@ class ChatroomsController < ApplicationController
   end
 
   def create_chatroom
-    # restrict the chatrooms u can create. like cant create the same one again
+
+    # prevent chatroom with yourself:
+    if (current_user.id == params[:user].to_i)
+      return
+    end
+
+    new_users = [current_user.id, params[:user].to_i]
+    if (chat_already_exists(new_users))
+      return
+    end
+
+    # new_users = params[:user].map(&:to_i)
+    # new_users.push(current_user.id)
+
+
+    # if (chat_already_exists(params[:user]))
+    #   return
+    # end
 
     @chatroom = Chatroom.new()
-
     @cru1 = ChatroomUser.new()
     @cru1.user = current_user
     @cru1.chatroom = @chatroom
@@ -110,5 +126,16 @@ class ChatroomsController < ApplicationController
       else
         chatroom.users[0]
       end
+    end
+
+    # true if the new chatroom already exists
+    def chat_already_exists(new_users)
+      sorted_new_users = new_users.sort
+      User.find(current_user.id).chatrooms.each do |chatroom|
+        if (sorted_new_users == chatroom.users.pluck(:id).sort)
+          return true
+        end
+      end
+      return false
     end
 end

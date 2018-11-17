@@ -26,22 +26,15 @@ function toggle_all_chats() {
 
 //CLICK TOGGLE IN CHAT WINDOW
 function toggle_chat(el) {
-  wdw = $(el).parents().eq(1)
   wrapper = $(el).parents().eq(2)
   btm_pnl = $(el).parents().eq(2).children().first()
-
   wrapper.css("visibility", "hidden")
   btm_pnl.css("visibility", "visible")
-
-
 }
 
 //CLICK BOTTOM HIDDEN CHAT
 function open_chat(el) {
-  btm_pnl = $(el).parents().eq(0)
-  chat_wdw = $(el).parents().eq(1).children().eq(1)
   wrapper = $(el).parents().eq(1)
-
   wrapper.css("visibility", "visible")
 }
 
@@ -76,8 +69,6 @@ function slide_chat(idx_to, idx_from) {
 
   dest.empty()
   dest.append(src.html())
-
-
   dest.css("visibility", src.css("visibility"))
   src.empty()
   src.css("visibility", "hidden")

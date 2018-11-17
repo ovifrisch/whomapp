@@ -2,6 +2,9 @@ class MessagesController < ApplicationController
   before_action :set_chatroom
 
   def create
+    puts "<<<<<<<<<<<<<<<<user_name"
+    puts current_user.username
+    puts "<<<<<<<<<<<<<<<<user_name"
     message = @chatroom.messages.new(message_params)
     message.user = current_user
     message.save
