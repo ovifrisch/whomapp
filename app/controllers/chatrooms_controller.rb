@@ -81,12 +81,6 @@ class ChatroomsController < ApplicationController
 
     @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
 
-    # byebug
-
-    #add this chatroom to actioncable
-    # conn = ActionCable.server.connections.first { |c| c.current_user == current_user }
-    # ChatroomsChannel.new(conn, "made_up_id").stream_from "chatrooms:#{@chatroom.id}"
-    # ActionCable.subscriptions.create 'ChatroomsChannel'
     #goes to views/chatrooms/create_chatrooms.js.erb
   end
 

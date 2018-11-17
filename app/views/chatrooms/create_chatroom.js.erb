@@ -16,23 +16,6 @@ App.cable.subscriptions.create({channel: "ChatroomsChannel", room: "chatrooms:<%
 );
     // Called when there's incoming data on the websocket for this channel
 
-
-//add the conversation to the chatbox
-// App.cable.subscriptions.create
-// App.chatrooms
-console.log("one");
-App.cable.subscriptions.create({channel: "ChatroomsChannel", room:"chatrooms:<%=@chatroom.id%>"},
-connected = function() {
-  console.log("connected");
-},
-disconnected = function() {
-  console.log("done");
-},
-disconnected = function() {
-  console.log("sup");
-});
-console.log("two");
-
 // cable.subscriptions.create({channel: "ChatroomsChannel", room: "chatrooms:<%=@chatroom.id%>"},
 // received = function(data) {
 //     console.log(data)
