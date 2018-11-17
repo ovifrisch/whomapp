@@ -81,11 +81,14 @@ class ChatroomsController < ApplicationController
 
     @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
 
+    @dest_user = destination_user(@chatroom)
+
     #goes to views/chatrooms/create_chatrooms.js.erb
   end
 
   def show_chat_window
     @chatroom = Chatroom.find(params[:chat_id])
+    @dest_user = destination_user(@chatroom)
     @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
   end
 
@@ -98,5 +101,14 @@ class ChatroomsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def chatroom_params
       params.require(:chatroom).permit(:name)
+    end
+
+    # returns the user that is on the other side of the line
+    def destination_user(chatroom)
+      if (current_user.id == chatroom.users[0].id)
+        chatroom.users[1]
+      else
+        chatroom.users[0]
+      end
     end
 end

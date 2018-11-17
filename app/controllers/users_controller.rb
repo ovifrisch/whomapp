@@ -68,4 +68,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :password)
   end
+
+  def destination_user(chatroom)
+    if (current_user.id = chatroom.users[0].id)
+      chatroom.users[1]
+    else
+      chatroom.users[0]
+    end
+  end
 end
