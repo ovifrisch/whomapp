@@ -1,6 +1,6 @@
 development:
   adapter: redis
-  url: redis://:KEbjbMu4tCNvps6BXoNbfJ08KaQOHM9a@redis-16207.c85.us-east-1-2.ec2.cloud.redislabs.com:16207
+  url: redis://localhost:6379/1
 
 test:
   adapter: redis

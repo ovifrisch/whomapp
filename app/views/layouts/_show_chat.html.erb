@@ -2,7 +2,7 @@
 
 <div class="collapse_chat_container">
   <button class="collapse_chat_togggle_open" onclick="open_chat(this)">
-    <%=@chatroom.users[1].username%>
+    <%=@dest_user.username%>
   </button>
   <button class="collapse_chat_close" onclick="close_chat(this.parentElement.parentElement)">X</button>
 </div>
@@ -11,7 +11,7 @@
   <div class="messages_header">
     <button class="close_chat_btn" onclick="close_chat(this.parentElement.parentElement.parentElement)">X</button>
     <button class="toggle_chat_btn" onclick="toggle_chat(this)">-</button>
-    <p class="messages_header_username" onclick="go_to_user(<%= @chatroom.users[1].id%>)">
+    <p class="messages_header_username" onclick="go_to_user(<%= @dest_user.username.id%>)">
       <%= @dest_user.username %>
     </p>
   </div>
