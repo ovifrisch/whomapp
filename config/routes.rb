@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     resources :messages
   end
   root 'pages#home'
-  get 'favicon', to: '#'
   get 'signup', to: 'users#new'
   post 'users/update_current_user_location', to: 'users#update_current_user_location'
   post 'chatrooms/create_chatroom', to: 'chatrooms#create_chatroom'
