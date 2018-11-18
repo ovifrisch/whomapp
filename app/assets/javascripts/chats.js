@@ -1,4 +1,4 @@
-const max_open_chats = 5
+var max_open_chats = 5
 var num_open_chats = 0
 
 
