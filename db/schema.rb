@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_18_075919) do
+ActiveRecord::Schema.define(version: 2018_11_19_022249) do
 
   create_table "chatroom_users", force: :cascade do |t|
     t.integer "chatroom_id"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 2018_11_18_075919) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "initiator_id"
+    t.integer "true_id"
+    t.index ["initiator_id"], name: "index_chatrooms_on_initiator_id"
+    t.index ["true_id"], name: "index_chatrooms_on_true_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -38,12 +42,16 @@ ActiveRecord::Schema.define(version: 2018_11_18_075919) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.string "username"
-    t.string "password_digest"
     t.float "longitude"
     t.float "latitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

@@ -1,24 +1,11 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   skip_before_action :verify_authenticity_token
-
-
-  def new
-    @user = User.new
-  end
 
   def show
 
-  end
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      flash[:success] = "Welcome to WhoMap #{@user.username}!"
-      redirect_to root_path
-    else
-      render 'new'
-    end
   end
 
   def index
@@ -28,9 +15,6 @@ class UsersController < ApplicationController
   end
 
   def update_current_user_location
-    if current_user.id == 1
-      return
-    end
 
     current_user.longitude = params[:longitude]
     current_user.latitude = params[:latitude]

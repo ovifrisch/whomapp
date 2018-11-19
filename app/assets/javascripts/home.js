@@ -19,7 +19,7 @@ function pin_at_position(user_id, latitude, longitude) {
       url: 'https://www.paraglidingmap.com/app/images/logo.svg',
       scaledSize: new google.maps.Size(50, 50) // scaled size
     }
-
+    console.log(loc)
     marker = new google.maps.Marker({
       position: loc,
       map: map,
@@ -58,6 +58,7 @@ function init_position_success(user_position) {
   //get the current user's location
   user_lat = user_position.coords.latitude;
   user_long = user_position.coords.longitude;
+  console.log(user_lat, user_long)
 
   // update this location in the db with a POST
   $.ajax({

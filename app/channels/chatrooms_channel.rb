@@ -1,3 +1,5 @@
+
+# channel for existing chatrooms
 class ChatroomsChannel < ApplicationCable::Channel
   def subscribed
     if (params[:room] != nil)
@@ -13,3 +15,5 @@ class ChatroomsChannel < ApplicationCable::Channel
     stop_all_streams
   end
 end
+
+# when a new chatrooms is created, 

@@ -15,15 +15,7 @@
       </div>
       <div id="chatbox_chat_wrap">
         <% @user_chatrooms.each do |chat| %>
-          <div class="chatbox_chat">
-            <button class="chatbox_chat_btn" id="chat<%=chat.id%>" onclick="chatbox_chat_clicked(this)">
-              <% if current_user.id == chat.users[0].id %>
-                <%=chat.users[1].username%>
-              <% else %>
-                <%=chat.users[0].username%>
-              <% end %>
-            </button>
-          </div>
+          <%= render 'chatrooms/chatbox_chat', obj: chat%>
         <% end %>
       </div>
       <div id="chatbox_search">

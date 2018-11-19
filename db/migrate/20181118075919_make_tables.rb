@@ -1,13 +1,5 @@
 class MakeTables < ActiveRecord::Migration[5.2]
   def change
-    create_table :users do |t|
-      t.string :username
-      t.string :password_digest
-      t.float :longitude
-      t.float :latitude
-      t.timestamps
-    end
-
     create_table :chatrooms do |t|
       t.string :name
       t.timestamps

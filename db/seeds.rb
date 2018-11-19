@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = User.create([
-  {username: "daniel", password: "pass", longitude: -117.081839, latitude: 32.724601},
-  {username: "alina", password: "pass", longitude: -122.438625, latitude: 37.464643},
-  {username: "neel", password: "pass", longitude: -122.170899, latitude: 37.423640},
-  {username: "minu", password: "pass", longitude: -121.744046, latitude: 38.552309},
-  {username: "derek", password: "pass", longitude: -117.826331, latitude: 33.675120}
+  {email: "daniel@gmail.com", username: "daniel", password: "password", longitude: -117.081839, latitude: 32.724601},
+  {email: "alina@gmail.com", username: "alina", password: "password", longitude: -122.438625, latitude: 37.464643},
+  {email: "neel@gmail.com", username: "neel", password: "password", longitude: -122.170899, latitude: 37.423640},
+  {email: "minu@gmail.com", username: "minu", password: "password", longitude: -121.744046, latitude: 38.552309},
+  {email: "derek@gmail.com", username: "derek", password: "password", longitude: -117.826331, latitude: 33.675120}
   ])

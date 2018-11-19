@@ -5,11 +5,23 @@ var num_open_chats = 0
 // CLICK USER ON MAP
 function create_conversation(user_id) {
   $.ajax({
-    url: "chatrooms/create_chatroom",
+    url: "chatrooms/create",
     type: "POST",
     dataType:"script",
     data: {user: user_id}
   });
+}
+
+//CLICK SIDE BAR CHAT
+function chatbox_chat_clicked(el) {
+  id = Number($(el).attr("id").substring(4,))
+
+  $.ajax({
+    url: "chatrooms/show",
+    type: "GET",
+    dataType: "script",
+    data: {chat_id: id}
+  })
 }
 
 //CLICK OPEN SIDEBAR
@@ -36,18 +48,6 @@ function toggle_chat(el) {
 function open_chat(el) {
   wrapper = $(el).parents().eq(1)
   wrapper.css("visibility", "visible")
-}
-
-//CLICK SIDE BAR CHAT
-function chatbox_chat_clicked(el) {
-  id = Number($(el).attr("id").substring(4,))
-
-  $.ajax({
-    url: "chatrooms/show_chat_window",
-    type: "POST",
-    dataType: "script",
-    data: {chat_id: id}
-  })
 }
 
 //CLICK CLOSE IN CHAT WINDOW

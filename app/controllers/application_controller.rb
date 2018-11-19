@@ -1,18 +1,31 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  protect_from_forgery with: :exception
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+
+  # def require_user
+  #   if !logged_in?
+  #     flash[:danger] = "You must be logged in to perform that action"
+  #     redirect_to root_path
+  #   end
+  # end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
 
-  def logged_in?
-    !!current_user
+  private
+
+  def after_sign_in_path_for(resource)
+    users_path
   end
 
-  def require_user
-    if !logged_in?
-      flash[:danger] = "You must be logged in to perform that action"
-      redirect_to root_path
-    end
+  def after_sign_up_path_for(resource)
+    users_path
   end
 end

@@ -1,4 +1,3 @@
-
 if (num_open_chats < max_open_chats) {
   num_open_chats += 1;
   $("#chat_wrapper" + num_open_chats).append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");

@@ -1,0 +1,9 @@
+<div class="chatbox_chat">
+  <button class="chatbox_chat_btn" id="chat<%=obj.id%>" onclick="chatbox_chat_clicked(this)">
+    <% if current_user.id == obj.users[0].id %>
+      <%=obj.users[1].username%>
+    <% else %>
+      <%=obj.users[0].username%>
+    <% end %>
+  </button>
+</div>
