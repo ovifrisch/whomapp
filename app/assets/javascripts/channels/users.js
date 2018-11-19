@@ -1,16 +1,21 @@
-console.log("yooo")
-App.users = App.cable.subscriptions.create({channel: "UsersChannel"}, {
+App.users = App.cable.subscriptions.create({channel: "NewConversationNotificationChannel"}, {
   connected() {
     // Called when the subscription is ready for use on the server
-    console.log("connected");
   },
   disconnected() {
     // Called when the subscription has been terminated by the server
-    console.log("disconnected");
   },
   received(data) {
-    // create a subscription to this chatroom
-
-    // if this is initiator, display the chat window
+    App.chatrooms = App.cable.subscriptions.create({channel: "ChatroomsChannel", room: "chatrooms:" + data.chatroom_id}, {
+      connected() {
+        // Called when the subscription is ready for use on the server
+      },
+      disconnected() {
+        // Called when the subscription has been terminated by the server
+      },
+      received(data) {
+        received_logic(data)
+      }
+    });
   }
 })

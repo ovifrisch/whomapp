@@ -3,8 +3,8 @@ class NewConversationRelayJob < ApplicationJob
 
   def perform(chatroom)
     chatroom.users.each do |user|
-      ActionCable.server.broadcast "users:#{user.id}", {
-        chatroom: chatroom
+      ActionCable.server.broadcast "users_convo_notif:#{user.id}", {
+        chatroom_id: chatroom.id
       }
     end
   end

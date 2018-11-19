@@ -1,6 +1,6 @@
-class UsersChannel < ApplicationCable::Channel
+class NewConversationNotificationChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "users:#{current_user.id}"
+    stream_from "users_convo_notif:#{current_user.id}"
   end
 
   def unsubscribed

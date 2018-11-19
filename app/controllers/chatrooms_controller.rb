@@ -54,7 +54,7 @@ class ChatroomsController < ApplicationController
   end
 
   def add_chatbox_chat
-    @chatroom = Chatroom.find(params[:chatroom_id])
+    @chatroom = Chatroom.find(params[:chatroom_id].to_i)
   end
 
   private

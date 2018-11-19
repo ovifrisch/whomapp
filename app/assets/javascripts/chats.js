@@ -26,14 +26,14 @@ function chatbox_chat_clicked(el) {
 
 //CLICK OPEN SIDEBAR
 function open_all_chats() {
-  $("#all_chat_btn").css("display", "none")
-  $("#all_chats_box").css("display", "block")
+  $("#all_chat_btn").css("visibility", "hidden")
+  $("#all_chats_box").css("visibility", "visible")
 }
 
 //CLICK CLOSE SIDE BAR
 function toggle_all_chats() {
-  $("#all_chats_box").css("display", "none")
-  $("#all_chat_btn").css("display", "block")
+  $("#all_chats_box").css("visibility", "hidden")
+  $("#all_chat_btn").css("visibility", "visible")
 }
 
 //CLICK TOGGLE IN CHAT WINDOW

@@ -16,4 +16,4 @@ class ChatroomsChannel < ApplicationCable::Channel
   end
 end
 
-# when a new chatrooms is created, 
+# when a new chatrooms is created,
