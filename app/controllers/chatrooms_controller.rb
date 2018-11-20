@@ -45,7 +45,6 @@ class ChatroomsController < ApplicationController
     @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
     @dest_user = destination_user(@chatroom)
 
-
     NewConversationRelayJob.perform_later(@chatroom)
     #goes to views/chatrooms/create.js.erb
   end
