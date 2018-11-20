@@ -7,6 +7,7 @@
   </head>
   <body>
     <%= render 'layouts/navigation'%>
+    <div class="loader"></div>
     <div id="map"></div>
     <button id="all_chat_btn" onclick="open_all_chats()">All Chats</button>
     <div id="all_chats_box">
@@ -36,11 +37,11 @@
     async defer></script>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+    <div class="modal fade" id="cname_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
-            <input type="text" id="conv_name_field", placeholder="Enter a name...">
+            <input type="text" id="conv_name_field" placeholder="Enter a name...">
           </div>
         </div>
       </div>

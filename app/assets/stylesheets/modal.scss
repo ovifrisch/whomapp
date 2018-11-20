@@ -10,3 +10,7 @@
 .modal-header {
   height: 45px;
 }
+
+.modal-dialog {
+  pointer-events: auto;
+}

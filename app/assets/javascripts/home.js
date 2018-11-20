@@ -39,6 +39,10 @@ function create_map() {
     mapTypeId: google.maps.MapTypeId.HYBRID
   });
 
+  google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+    $(".loader").css("visibility", "hidden")
+  });
+
   add_bounds_listeners() // in bounds_contrl.js
 }
 
@@ -123,13 +127,16 @@ function getCent() {
 }
 
 $(document).ready(function(){
+
+  // LOGO BTN CLICKED
   $("#home_btn").click(function() {
     map.setZoom(14);
     map.panTo({lat: user_lat, lng: user_long});
   })
 
-  // $("#map").on("click", function() {
-  //   map.setOptions({draggable: true})
-  // })
+  //FOCUS MODAL
+  $('#cname_modal').on('shown.bs.modal', function() {
+    $("#conv_name_field").focus();
+  });
 
 });
