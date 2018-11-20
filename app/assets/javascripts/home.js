@@ -4,6 +4,9 @@ var map;
 var current_user_id;
 var markers = [];
 
+// map centers during drag
+drag_array = [];
+
 function initMap() {
   navigator.geolocation.getCurrentPosition(init_position_success);
 }
@@ -32,11 +35,30 @@ function create_map() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: user_lat, lng: user_long},
     zoom: 14,
+    minZoom: 2,
     zoomControl: false,
     streetViewControl: false,
     fullscreenControl: false,
     mapTypeId: google.maps.MapTypeId.HYBRID
   });
+
+  map.addListener('dragstart', function() {
+    drag_array = []
+    drag_array.push(map.getCenter())
+  })
+
+  map.addListener('drag', function() {
+    drag_array.push(map.getCenter())
+
+    var bounds = map.getBounds();
+    var sLat = bounds.getSouthWest().lat();
+    var nLat = bounds.getNorthEast().lat();
+
+    if (sLat < -85 || nLat > 85) {
+      // we want to set the map back to the last accepted drag position, which is the second last of the drag_array
+      map.setCenter({lat: drag_array[drag_array.length - 2].lat(), lng: drag_array[drag_array.length - 2].lng()})
+    }
+  })
 }
 
 function set_current_user() {
@@ -115,10 +137,18 @@ function click_marker(marker) {
   create_conversation([marker.user_id])
 }
 
+function getCent() {
+  console.log(map.getCenter().lng())
+}
+
 $(document).ready(function(){
   $("#home_btn").click(function() {
     map.setZoom(14);
     map.panTo({lat: user_lat, lng: user_long});
   })
+
+  // $("#map").on("click", function() {
+  //   map.setOptions({draggable: true})
+  // })
 
 });
