@@ -23,7 +23,7 @@
   </div>
   <div class="new_messages_container">
     <%= form_for [@chatroom, Message.new], remote: true, :html => {:id => "new_message_#{@chatroom.id}"} do |f| %>
-      <%= f.text_field :body, rows: 1, class:"form-control", :html => {:id => "message_field"}%>
+      <%= f.text_field :body, rows: 1, :html => {:id => "message_field"}, placeholder: "Send a message..."%>
     <% end %>
   </div>
 </div>
