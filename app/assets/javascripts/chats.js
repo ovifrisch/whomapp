@@ -8,7 +8,7 @@ function create_conversation(user_id) {
     url: "chatrooms/create",
     type: "POST",
     dataType:"script",
-    data: {user: user_id}
+    data: {users: [user_id]}
   });
 }
 

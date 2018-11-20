@@ -23,27 +23,25 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    # user_ids = params[:users].map(&:to_i)
-    # prevent chatroom with yourself:
-    # byebug
-    # params[:users]
+    user_ids = params[:users].map(&:to_i)
 
-    # if (current_user.id == user_ids[0])
-    #   return
-    # end
-    #
-    # # prevent existing chat
-    # new_users = [current_user.id, user_ids[0]]
-    # if (chat_already_exists(new_users))
-    #   return
-    # end
+    # prevent chatroom with yourself:
+    if (current_user.id == user_ids[0])
+      return
+    end
+
+    # prevent existing chat
+    new_users = [current_user.id, user_ids[0]]
+    if (chat_already_exists(new_users))
+      return
+    end
 
     @chatroom = Chatroom.new()
     @cru1 = ChatroomUser.new()
     @cru1.user = current_user
     @cru1.chatroom = @chatroom
     @cru2 = ChatroomUser.new()
-    @cru2.user = User.find(params[:user])
+    @cru2.user = User.find(user_ids[0])
     @cru2.chatroom = @chatroom
     @chatroom.initiator = current_user
     @chatroom.save
