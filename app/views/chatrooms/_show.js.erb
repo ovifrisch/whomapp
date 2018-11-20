@@ -1,10 +1,7 @@
 if (num_open_chats < max_open_chats) {
-  wdw = $("#chat_wrapper" + (num_open_chats + 1))
-  console.log(num_open_chat_windows())
-  // the number of pixels to left shit this chat window from its normal position
-  left_shift = (num_open_chats - num_open_chat_windows()) * 50
-  wdw.css("left", '-=' + left_shift)
-  wdw.append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");
-  wdw.css("visibility", "visible");
+  wrapper = $("#chat_wrapper" + (num_open_chats + 1))
+  wrapper.append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");
+  wrapper.css("visibility", "visible");
+  append_to_end(wrapper)
   num_open_chats += 1;
 }

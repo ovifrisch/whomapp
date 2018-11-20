@@ -44,6 +44,15 @@ function chatbox_chat_clicked(el) {
   }
 }
 
+// "chat_wrapper3" => 3
+function chatwrap_to_idnum(chatwrap) {
+  return Number(chatwrap.attr('id').substr(-1))
+}
+
+function idnum_to_chatwrap(idnum) {
+  return $("#chat_wrapper" + idnum)
+}
+
 function chat_window_opened(id) {
   wdw = $("#messages_container_" + id).parents().eq(1)
   if (wdw.css("visibility") == "visible") {
@@ -106,6 +115,11 @@ function close_chat(el) {
   num_open_chats -= 1
 }
 
+function append_to_end(wrapper) {
+  px_pos = get_pixel_position(wrapper)
+  wrapper.css({left: px_pos})
+}
+
 // MOVE THE CONTENT OF #(chat_wrapper<idx_from>) to #(chat_wrapper<idx_to>)
 function slide_chat(idx_to, idx_from, open_wdw_visibility) {
   src = $("#chat_wrapper" + idx_from)
@@ -115,13 +129,19 @@ function slide_chat(idx_to, idx_from, open_wdw_visibility) {
   dest.empty()
   dest.append(src.html())
   dest.css("visibility", src.css("visibility"))
-
-  if (idx_to != 1 && open_wdw_visibility == "hidden") {
-    dest.css("left", "+=50")
-  }
-
   src.empty()
   src.css("visibility", "hidden")
+
+  px_pos = get_pixel_position(dest)
+  dest.css({left: px_pos})
+}
+
+function get_pixel_position(wrapper) {
+  num_left_open = open_wrappers_to_left(wrapper)
+  num_left_closed = chatwrap_to_idnum(wrapper) - 1 - num_left_open
+  num_left = chatwrap_to_idnum(wrapper)
+  px_pos = 200 + (num_left_open * 200) + (num_left_open * 20) + (num_left_closed * 150) + (num_left_closed * 20)
+  return px_pos
 }
 
 function go_to_user(id) {
@@ -157,21 +177,23 @@ function num_open_chat_windows() {
   return count
 }
 
-// "chat_wrapper3" => 3
-function chatwrap_to_idnum(chatwrap) {
-  return Number(chatwrap.attr('id').substr(-1))
-}
-
-function idnum_to_chatwrap(idnum) {
-  return $("#chat_wrapper" + idnum)
-}
-
 //number of open chats to the right of current
 function open_wrappers_to_right(wrapper) {
   count = 0
   curr = chatwrap_to_idnum(wrapper)
   for (var i = curr + 1; i <= num_open_chats; i++) {
-    if ($("#" + idnum_to_chatwrap(i)).children().eq(1).css("visibility") == "visible") {
+    if (idnum_to_chatwrap(i).children().eq(1).css("visibility") == "visible") {
+      count++
+    }
+  }
+  return count
+}
+
+function open_wrappers_to_left(wrapper) {
+  count = 0
+  curr = chatwrap_to_idnum(wrapper)
+  for (var i = curr - 1; i >= 1; i--) {
+    if (idnum_to_chatwrap(i).children().eq(1).css("visibility") == "visible") {
       count++
     }
   }

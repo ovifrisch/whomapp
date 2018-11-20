@@ -1,6 +1,5 @@
 <% if @chatroom != nil %>
   $("#chatbox_chat_wrap").append("<%= escape_javascript("#{render 'chatbox_chat', obj: @chatroom}").html_safe%>");
   <%= render :partial => 'show.js.erb'%>
-
   $("#message_field_" + <%= @chatroom.id%>).focus()
 <% end %>
