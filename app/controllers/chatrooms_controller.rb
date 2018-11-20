@@ -23,36 +23,31 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    user_ids = params[:users].map(&:to_i)
+    user_ids = get_all_members(params[:users].map(&:to_i))
 
-    # prevent chatroom with yourself:
-    if (current_user.id == user_ids[0])
+    if (!valid_chatroom(user_ids))
       return
     end
 
-    # prevent existing chat
-    new_users = [current_user.id, user_ids[0]]
-    if (chat_already_exists(new_users))
-      return
-    end
-
+    # CREATE THE CHATROOM
     @chatroom = Chatroom.new()
-    @cru1 = ChatroomUser.new()
-    @cru1.user = current_user
-    @cru1.chatroom = @chatroom
-    @cru2 = ChatroomUser.new()
-    @cru2.user = User.find(user_ids[0])
-    @cru2.chatroom = @chatroom
     @chatroom.initiator = current_user
     @chatroom.save
-    @cru1.save
-    @cru2.save
+
+    # ADD EACH USER TO IT
+    user_ids.each do |user_id|
+      chatroom_user = ChatroomUser.new()
+      chatroom_user.user = User.find(user_id)
+      chatroom_user.chatroom = @chatroom
+      chatroom_user.save
+    end
+
     @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
     @dest_user = destination_user(@chatroom)
 
 
     NewConversationRelayJob.perform_later(@chatroom)
-    #goes to views/chatrooms/create_chatrooms.js.erb
+    #goes to views/chatrooms/create.js.erb
   end
 
   def add_chatbox_chat
@@ -60,6 +55,27 @@ class ChatroomsController < ApplicationController
   end
 
   private
+
+    def get_all_members(users)
+      if (users.include? current_user.id)
+        users
+      else
+        users.unshift(current_user.id)
+      end
+    end
+
+
+    def valid_chatroom(user_ids)
+      # NO CHAT WITH SELF
+      if (user_ids.length == 1 && user_ids[0] == current_user.id)
+        return false
+      # NO EXISTING CHAT
+      elsif (chat_exists(user_ids))
+        return false
+      else
+        return true
+      end
+    end
 
     # returns the user that is on the other side of the line
     def destination_user(chatroom)
@@ -70,8 +86,7 @@ class ChatroomsController < ApplicationController
       end
     end
 
-    # true if the new chatroom already exists
-    def chat_already_exists(new_users)
+    def chat_exists(new_users)
       sorted_new_users = new_users.sort
       User.find(current_user.id).chatrooms.each do |chatroom|
         if (sorted_new_users == chatroom.users.pluck(:id).sort)
