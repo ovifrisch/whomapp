@@ -21,6 +21,7 @@ function polygon_complete(polygon) {
   // in chats.js
   create_conversation(enclosed_markers.map(enclosed_markers => enclosed_markers.user_id))
   polygon.setMap(null)
+  drawing_manager.setDrawingMode(null)
 }
 
 // https://stackoverflow.com/questions/9541240/is-there-a-way-to-fade-out-a-v3-google-maps-polygon

@@ -4,9 +4,6 @@ var map;
 var current_user_id;
 var markers = [];
 
-// map centers during drag
-drag_array = [];
-
 function initMap() {
   navigator.geolocation.getCurrentPosition(init_position_success);
 }
@@ -42,23 +39,7 @@ function create_map() {
     mapTypeId: google.maps.MapTypeId.HYBRID
   });
 
-  map.addListener('dragstart', function() {
-    drag_array = []
-    drag_array.push(map.getCenter())
-  })
-
-  map.addListener('drag', function() {
-    drag_array.push(map.getCenter())
-
-    var bounds = map.getBounds();
-    var sLat = bounds.getSouthWest().lat();
-    var nLat = bounds.getNorthEast().lat();
-
-    if (sLat < -85 || nLat > 85) {
-      // we want to set the map back to the last accepted drag position, which is the second last of the drag_array
-      map.setCenter({lat: drag_array[drag_array.length - 2].lat(), lng: drag_array[drag_array.length - 2].lng()})
-    }
-  })
+  add_bounds_listeners() // in bounds_contrl.js
 }
 
 function set_current_user() {
@@ -138,7 +119,7 @@ function click_marker(marker) {
 }
 
 function getCent() {
-  console.log(map.getCenter().lng())
+  map.panTo({lat: user_lat, lng: user_long});
 }
 
 $(document).ready(function(){

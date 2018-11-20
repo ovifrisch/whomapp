@@ -7,6 +7,12 @@
   position: fixed;
 }
 
+#logo {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 #all_chats_titlebar {
   height: 5%;
   border: 1px solid black;
