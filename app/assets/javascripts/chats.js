@@ -12,6 +12,15 @@ function create_conversation(user_id) {
   });
 }
 
+function create_group_conversation(user_ids) {
+  $.ajax({
+    url: "chatrooms/create",
+    type: "POST",
+    dataType:"script",
+    data: {users: user_ids}
+  });
+}
+
 //CLICK SIDE BAR CHAT
 function chatbox_chat_clicked(el) {
   id = Number($(el).attr("id").substring(4,))

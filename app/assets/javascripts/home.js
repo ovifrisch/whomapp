@@ -2,6 +2,7 @@ var user_lat;
 var user_long;
 var map;
 var current_user_id;
+var markers = [];
 
 function initMap() {
   navigator.geolocation.getCurrentPosition(init_position_success);
@@ -12,6 +13,7 @@ function init_position_success(user_position) {
   user_long = user_position.coords.longitude;
   update_current_user_location()
   create_map()
+  create_drawing_manager()
   set_current_user()
   get_all_users_locations() //will also set them in the callback
 }
@@ -59,7 +61,8 @@ function get_all_users_locations() {
 
 function set_all_users_locations(locations_hash) {
   for (var i = 0; i < locations_hash.length; i++) {
-    pin_at_position(locations_hash[i].id, locations_hash[i].latitude, locations_hash[i].longitude);
+    marker = pin_at_position(locations_hash[i].id, locations_hash[i].latitude, locations_hash[i].longitude);
+    markers.push(marker)
   }
 }
 
@@ -76,6 +79,7 @@ function pin_at_position(user_id, latitude, longitude) {
   marker.addListener('click', function() {
     click_marker(marker);
   });
+  return marker
 }
 
 function current_user_marker(user_id, loc) {
