@@ -23,7 +23,9 @@ class ChatroomsController < ApplicationController
   end
 
   def create
+
     user_ids = get_all_members(params[:users].map(&:to_i))
+    chat_name = params[:name]
 
     if (!valid_chatroom(user_ids))
       return
@@ -32,6 +34,7 @@ class ChatroomsController < ApplicationController
     # CREATE THE CHATROOM
     @chatroom = Chatroom.new()
     @chatroom.initiator = current_user
+    @chatroom.name = chat_name
     @chatroom.save
 
     # ADD EACH USER TO IT

@@ -19,7 +19,7 @@ function polygon_complete(polygon) {
   enclosed_markers = get_enclosed_markers(polygon)
 
   // in chats.js
-  create_group_conversation(enclosed_markers.map(enclosed_markers => enclosed_markers.user_id))
+  create_conversation(enclosed_markers.map(enclosed_markers => enclosed_markers.user_id))
   polygon.setMap(null)
 }
 

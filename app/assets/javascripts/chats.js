@@ -2,23 +2,21 @@ var max_open_chats = 5
 var num_open_chats = 0
 
 
-// CLICK USER ON MAP
-function create_conversation(user_id) {
-  $.ajax({
-    url: "chatrooms/create",
-    type: "POST",
-    dataType:"script",
-    data: {users: [user_id]}
-  });
-}
-
-function create_group_conversation(user_ids) {
-  $.ajax({
-    url: "chatrooms/create",
-    type: "POST",
-    dataType:"script",
-    data: {users: user_ids}
-  });
+// CLICK USER ON MAP OR CALLED AFTER POLYGON DRAWN (drawing.js)
+function create_conversation(user_ids) {
+  $('#exampleModal').modal('show');
+  $("#conv_name_field").on("keydown", function(e) {
+    if (e.keyCode == 13) {
+      chat_name = $("#conv_name_field").val()
+      $('#exampleModal').modal('hide');
+      $.ajax({
+        url: "chatrooms/create",
+        type: "POST",
+        dataType:"script",
+        data: {users: user_ids, name: chat_name}
+      });
+    }
+  })
 }
 
 //CLICK SIDE BAR CHAT
