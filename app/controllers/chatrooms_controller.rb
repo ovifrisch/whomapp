@@ -32,6 +32,10 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.new()
     @chatroom.initiator = current_user
     @chatroom.name = chat_name
+
+    # coordinates = params[:coords]
+
+
     @chatroom.save
 
     # ADD EACH USER TO IT

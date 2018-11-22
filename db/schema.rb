@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_022249) do
+ActiveRecord::Schema.define(version: 2018_11_22_204125) do
 
   create_table "chatroom_users", force: :cascade do |t|
     t.integer "chatroom_id"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 2018_11_19_022249) do
     t.integer "true_id"
     t.index ["initiator_id"], name: "index_chatrooms_on_initiator_id"
     t.index ["true_id"], name: "index_chatrooms_on_true_id"
+  end
+
+  create_table "coordinates", force: :cascade do |t|
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "position"
   end
 
   create_table "messages", force: :cascade do |t|
