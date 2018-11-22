@@ -1,0 +1,11 @@
+<% if @chatroom != nil %>
+  if (chatroom_already_opened(<%=@chatroom.id%>)) {
+    if (!chat_window_opened(<%=@chatroom.id%>)) {
+      open_chat($("#messages_container_" + <%=@chatroom.id%>))
+    }
+  }
+  else {
+    <%= render :partial => 'show.js.erb'%>
+  }
+  $("#message_field_" + <%= @chatroom.id%>).focus()
+<% end %>

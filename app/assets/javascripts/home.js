@@ -122,7 +122,7 @@ function click_marker(marker) {
   create_conversation([marker.user_id])
 }
 
-function getCent() {
+function panToCurrentUser() {
   map.panTo({lat: user_lat, lng: user_long});
 }
 

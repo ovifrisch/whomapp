@@ -8,18 +8,38 @@ function create_conversation(user_ids) {
     $('#cname_modal').modal('hide');
     return
   }
-  $('#cname_modal').modal('show');
-  $("#conv_name_field").val("")
-  $("#conv_name_field").on("keydown", function(e) {
-    if (e.keyCode == 13) {
-      chat_name = $("#conv_name_field").val()
-      $('#cname_modal').modal('hide');
-      $.ajax({
-        url: "chatrooms/create",
-        type: "POST",
-        dataType:"script",
-        data: {users: user_ids, name: chat_name}
-      });
+
+  $.ajax({
+    url: "chatrooms/validate_chatroom",
+    type: "GET",
+    dataType: "json",
+    data: {users: user_ids},
+    success: function(valid) {
+      if (valid) {
+        console.log("helloooooo")
+        $('#cname_modal').modal('show');
+        $("#conv_name_field").val("")
+        $("#conv_name_field").on("keydown", function(e) {
+          if (e.keyCode == 13) {
+            chat_name = $("#conv_name_field").val()
+            $('#cname_modal').modal('hide');
+            $.ajax({
+              url: "chatrooms/create",
+              type: "POST",
+              dataType:"script",
+              data: {users: user_ids, name: chat_name}
+            });
+          }
+        })
+      }
+      else {
+        $.ajax({
+          url: "chatrooms/show_chatroom_given_users",
+          type: "GET",
+          dataType: "script",
+          data: {users: user_ids}
+        })
+      }
     }
   })
 }

@@ -7,11 +7,20 @@ $(document).ready(function() {
     address = querried_location + ", us";
     var geocoder =  new google.maps.Geocoder();
     geocoder.geocode( { 'address': querried_location}, function(results, status) {
+      if(results.length == 0) {
+        return
+      }
       latitude = results[0].geometry.location.lat();
       longitude = results[0].geometry.location.lng();
       map.setCenter({lat: latitude, lng: longitude});
       map.setZoom(12);
     });
+
+    $("search_loc_field").on("keypress", function(e) {
+      if (e.keyCode == 13) {
+        console.log("enter")
+      }
+    })
   })
 
   $('#search_loc_field').keypress(function(e){
@@ -21,3 +30,7 @@ $(document).ready(function() {
     }
     });
 })
+
+function location_requested() {
+
+}
