@@ -1,3 +1,3 @@
-class Message < ApplicationRecord
+class Coordinate < ApplicationRecord
   belongs_to :chatroom
 end

@@ -16,7 +16,6 @@ class MakeTables < ActiveRecord::Migration[5.2]
       t.references :chatroom, foreign_key: true
       t.references :user, foreign_key: true
       t.text :body
-
       t.timestamps
     end
   end
