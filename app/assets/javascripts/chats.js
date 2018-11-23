@@ -193,13 +193,35 @@ function locate_chatroom_on_map(chatroom_id) {
         coord = {lat: poly_coords[i].latitude, lng: poly_coords[i].longitude}
         coords.push(coord)
       }
+
       var polygon = new google.maps.Polygon({
           path: coords,
           strokeColor: 'black',
-          strokeOpacity: 0.8,
-          strokeWeight: 2
+          strokeOpacity: 1.0,
+          fillOpacity: 0.0
         });
-        polygon.setMap(map);
+      polygon.setMap(map);
+
+
+      var bounds = new google.maps.LatLngBounds()
+      for (var i = 0; i < coords.length; i++) {
+        bounds.extend(coords[i]);
+      }
+      map.fitBounds(bounds)
+
+      var fadeout = setInterval(function() {
+        var seconds = 3
+        var stroke = polygon.strokeOpacity/50
+        if (polygon.strokeOpacity <= 0) {
+          clearInterval(fadeout)
+          polygon.setVisible(false);
+        }
+        else {
+          polygon.setOptions({
+            'strokeOpacity': Math.max(0, polygon.strokeOpacity-stroke)
+          })
+        }
+      }, 50)
     }
   })
 }
