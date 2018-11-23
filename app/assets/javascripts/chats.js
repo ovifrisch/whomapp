@@ -35,7 +35,7 @@ function create_conversation(user_ids, positions, polygon = null) {
               url: "chatrooms/create",
               type: "POST",
               dataType:"script",
-              data: {users: user_ids, name: chat_name}
+              data: {users: user_ids, name: chat_name, coords: positions}
             });
             fadeOutPolygon(polygon)
           }
@@ -194,9 +194,10 @@ function locate_chatroom_on_map(chatroom_id) {
     data: {id: chatroom_id},
     dataType:"json",
     success: function(poly_coords) {
+      console.log(poly_coords)
       var coords = []
       for (var i = 0; i < poly_coords.length; i++) {
-        coord = {lat: poly_coords[i].latitude, lng: poly_coords[i].longitude}
+        coord = {lat: parseFloat(poly_coords[i].latitude), lng: parseFloat(poly_coords[i].longitude)}
         coords.push(coord)
       }
       if (coords.length == 1) {

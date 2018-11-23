@@ -31,29 +31,24 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.new()
     @chatroom.initiator = current_user
     @chatroom.name = chat_name
-
-    # coordinates = params[:coords]
-    # ActiveRecord::Base.transaction do
-    #   coordinates.each do |coordinate|
-    #     new_coordinate = Coordinate.new()
-    #     new_coordinate.position = coordinate[0]
-    #     new_coordinate.latitude = coordinate[1][0]
-    #     new_coordinate.longitude = coordinate[1][1]
-    #     new_coordinate.chatroom = @chatroom
-    #     new_coordinate.save!
-    #   end
-    # end
-
     @chatroom.save!
 
+    coordinates = params[:coords]
+    coordinates.each do |coordinate|
+      new_coordinate = Coordinate.new()
+      new_coordinate.position = coordinate[0].to_i
+      new_coordinate.latitude = coordinate[1][0].to_f
+      new_coordinate.longitude = coordinate[1][1].to_f
+      new_coordinate.chatroom = @chatroom
+      new_coordinate.save!
+    end
+
     # ADD EACH USER TO IT
-    ActiveRecord::Base.transaction do
-      user_ids.each do |user_id|
-        chatroom_user = ChatroomUser.new()
-        chatroom_user.user = User.find(user_id)
-        chatroom_user.chatroom = @chatroom
-        chatroom_user.save!
-      end
+    user_ids.each do |user_id|
+      chatroom_user = ChatroomUser.new()
+      chatroom_user.user = User.find(user_id)
+      chatroom_user.chatroom = @chatroom
+      chatroom_user.save!
     end
 
     @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
