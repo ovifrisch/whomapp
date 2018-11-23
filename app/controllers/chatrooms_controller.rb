@@ -32,17 +32,17 @@ class ChatroomsController < ApplicationController
     @chatroom.initiator = current_user
     @chatroom.name = chat_name
 
-    coordinates = params[:coords]
-    ActiveRecord::Base.transaction do
-      coordinates.each do |coordinate|
-        new_coordinate = Coordinate.new()
-        new_coordinate.position = coordinate[0]
-        new_coordinate.latitude = coordinate[1][0]
-        new_coordinate.longitude = coordinate[1][1]
-        new_coordinate.chatroom = @chatroom
-        new_coordinate.save!
-      end
-    end
+    # coordinates = params[:coords]
+    # ActiveRecord::Base.transaction do
+    #   coordinates.each do |coordinate|
+    #     new_coordinate = Coordinate.new()
+    #     new_coordinate.position = coordinate[0]
+    #     new_coordinate.latitude = coordinate[1][0]
+    #     new_coordinate.longitude = coordinate[1][1]
+    #     new_coordinate.chatroom = @chatroom
+    #     new_coordinate.save!
+    #   end
+    # end
 
     @chatroom.save!
 

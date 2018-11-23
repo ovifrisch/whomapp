@@ -21,16 +21,11 @@ function create_drawing_manager() {
 
 function polygon_complete(polygon) {
   enclosed_markers = get_enclosed_markers(polygon)
-  // in chats.js
   user_ids = enclosed_markers.map(enclosed_markers => enclosed_markers.user_id)
   positions = polygon.getPath().getArray()
-  create_conversation(user_ids, positions, polygon)
-  // polygon.setMap(null)
+  create_conversation(user_ids, positions, polygon) // in chats.js
   drawing_manager.setDrawingMode(null)
 }
-
-// https://stackoverflow.com/questions/9541240/is-there-a-way-to-fade-out-a-v3-google-maps-polygon
-function polygon_fadeout() {}
 
 function get_enclosed_markers(polygon) {
   enclosed_markers = []
@@ -42,14 +37,3 @@ function get_enclosed_markers(polygon) {
   }
   return enclosed_markers
 }
-
-
-
-
-
-
-
-
-
-
-//

@@ -35,7 +35,7 @@ function create_conversation(user_ids, positions, polygon = null) {
               url: "chatrooms/create",
               type: "POST",
               dataType:"script",
-              data: {users: user_ids, name: chat_name, coords: positions}
+              data: {users: user_ids, name: chat_name}
             });
             fadeOutPolygon(polygon)
           }
