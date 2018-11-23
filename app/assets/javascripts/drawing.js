@@ -7,7 +7,12 @@ function create_drawing_manager() {
     drawingControlOptions: {
             position: google.maps.ControlPosition.BOTTOM_RIGHT,
             drawingModes: ['polygon']
-          }
+          },
+    polygonOptions: {
+      strokeColor: 'black',
+      strokeOpacity: 1.0,
+      fillOpacity: 0.0
+    }
   })
   drawing_manager.setMap(map)
 
@@ -15,14 +20,12 @@ function create_drawing_manager() {
 }
 
 function polygon_complete(polygon) {
-  polygon_fadeout()
   enclosed_markers = get_enclosed_markers(polygon)
-
   // in chats.js
   user_ids = enclosed_markers.map(enclosed_markers => enclosed_markers.user_id)
   positions = polygon.getPath().getArray()
-  create_conversation(user_ids, positions)
-  polygon.setMap(null)
+  create_conversation(user_ids, positions, polygon)
+  // polygon.setMap(null)
   drawing_manager.setDrawingMode(null)
 }
 

@@ -3,11 +3,13 @@ var num_open_chats = 0
 
 
 // CLICK USER ON MAP OR CALLED AFTER POLYGON DRAWN (drawing.js)
-function create_conversation(user_ids, positions) {
+function create_conversation(user_ids, positions, polygon = null) {
   positions = positions.map(positions => [positions.lat(), positions.lng()])
-  console.log(positions)
   if (user_ids.length == 0) {
     $('#cname_modal').modal('hide');
+    if (polygon != null) {
+      polygon.setMap(null)
+    }
     return
   }
 
@@ -19,6 +21,11 @@ function create_conversation(user_ids, positions) {
     success: function(valid) {
       if (valid) {
         $('#cname_modal').modal('show');
+        $("body").on("click", function() {
+          if (polygon != null) {
+            polygon.setMap(null)
+          }
+        })
         $("#conv_name_field").val("")
         $("#conv_name_field").on("keydown", function(e) {
           if (e.keyCode == 13) {
@@ -30,6 +37,7 @@ function create_conversation(user_ids, positions) {
               dataType:"script",
               data: {users: user_ids, name: chat_name, coords: positions}
             });
+            fadeOutPolygon(polygon)
           }
         })
       }
@@ -40,6 +48,7 @@ function create_conversation(user_ids, positions) {
           dataType: "script",
           data: {users: user_ids}
         })
+        fadeOutPolygon(polygon)
       }
     }
   })
@@ -190,7 +199,6 @@ function locate_chatroom_on_map(chatroom_id) {
         coord = {lat: poly_coords[i].latitude, lng: poly_coords[i].longitude}
         coords.push(coord)
       }
-      console.log(coords)
       if (coords.length == 1) {
         map.panTo({lat: coords[0].lat, lng: coords[0].lng})
         map.setZoom(11)
@@ -211,22 +219,27 @@ function locate_chatroom_on_map(chatroom_id) {
         bounds.extend(coords[i]);
       }
       map.fitBounds(bounds)
-
-      var fadeout = setInterval(function() {
-        var seconds = 3
-        var stroke = polygon.strokeOpacity/50
-        if (polygon.strokeOpacity <= 0) {
-          clearInterval(fadeout)
-          polygon.setVisible(false);
-        }
-        else {
-          polygon.setOptions({
-            'strokeOpacity': Math.max(0, polygon.strokeOpacity-stroke)
-          })
-        }
-      }, 50)
+      fadeOutPolygon(polygon)
     }
   })
+}
+
+function fadeOutPolygon(polygon) {
+  if (polygon == null) {
+    return
+  }
+  var fadeout = setInterval(function() {
+    var stroke = polygon.strokeOpacity/30
+    if (polygon.strokeOpacity <= 0) {
+      clearInterval(fadeout)
+      polygon.setVisible(false);
+    }
+    else {
+      polygon.setOptions({
+        'strokeOpacity': Math.max(0, polygon.strokeOpacity-stroke)
+      })
+    }
+  }, 50)
 }
 
 function chat_wrapper_active(chat_wrapper_element) {
