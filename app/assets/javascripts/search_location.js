@@ -15,12 +15,6 @@ $(document).ready(function() {
       map.setCenter({lat: latitude, lng: longitude});
       map.setZoom(12);
     });
-
-    $("search_loc_field").on("keypress", function(e) {
-      if (e.keyCode == 13) {
-        console.log("enter")
-      }
-    })
   })
 
   $('#search_loc_field').keypress(function(e){

@@ -11,7 +11,7 @@
   <div class="messages_header">
     <button class="close_chat_btn" onclick="close_chat(this.parentElement.parentElement.parentElement)">X</button>
     <button class="toggle_chat_btn" onclick="toggle_chat(this)">-</button>
-    <p class="messages_header_username" onclick="go_to_user(<%= @dest_user.id%>)">
+    <p class="messages_header_username" onclick="locate_chatroom_on_map(<%= @chatroom.id %>)">
       <%= @chatroom.name %>
     </p>
   </div>

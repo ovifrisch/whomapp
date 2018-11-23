@@ -19,7 +19,9 @@ function polygon_complete(polygon) {
   enclosed_markers = get_enclosed_markers(polygon)
 
   // in chats.js
-  create_conversation(enclosed_markers.map(enclosed_markers => enclosed_markers.user_id))
+  user_ids = enclosed_markers.map(enclosed_markers => enclosed_markers.user_id)
+  positions = polygon.getPath().getArray()
+  create_conversation(user_ids, positions)
   polygon.setMap(null)
   drawing_manager.setDrawingMode(null)
 }

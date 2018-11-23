@@ -119,7 +119,7 @@ function anonymous_user_marker(user_id, loc) {
 }
 
 function click_marker(marker) {
-  create_conversation([marker.user_id])
+  create_conversation([marker.user_id], [marker.getPosition()])
 }
 
 function panToCurrentUser() {

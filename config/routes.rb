@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'chatrooms/show_new_message_notification', to: 'chatrooms#show_new_message_notification'
   get 'chatrooms/validate_chatroom', to: "chatrooms#validate_chatroom"
   get 'chatrooms/show_chatroom_given_users', to: "chatrooms#show_chatroom_given_users"
+  get 'chatrooms/get_coordinates', to: "chatrooms#get_coordinates"
 
   get 'users/get_user_locations', to: 'users#get_user_locations'
   get 'users/get_current_user', to: 'users#get_current_user'

@@ -24,7 +24,6 @@ class ChatroomsController < ApplicationController
 
   # params[:users] assumed to be valid bc of previous ajax check
   def create
-
     user_ids = get_all_members(params[:users].map(&:to_i))
     chat_name = params[:name]
 
@@ -33,8 +32,15 @@ class ChatroomsController < ApplicationController
     @chatroom.initiator = current_user
     @chatroom.name = chat_name
 
-    # coordinates = params[:coords]
-
+    coordinates = params[:coords]
+    coordinates.each do |coordinate|
+      new_coordinate = Coordinate.new()
+      new_coordinate.position = coordinate[0]
+      new_coordinate.latitude = coordinate[1][0]
+      new_coordinate.longitude = coordinate[1][1]
+      new_coordinate.chatroom = @chatroom
+      new_coordinate.save
+    end
 
     @chatroom.save
 
@@ -78,6 +84,12 @@ class ChatroomsController < ApplicationController
     if (@chatroom != nil)
       @dest_user = destination_user(@chatroom)
       @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
+    end
+  end
+
+  def get_coordinates
+    respond_to do |format|
+      format.json { render json: Chatroom.find(params[:id]).coordinates }
     end
   end
 

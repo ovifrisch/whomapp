@@ -26,14 +26,10 @@ function drag_listener() {
 
 // fix this later
 function zoom_listener() {
-  console.log("zoom")
   var bounds = map.getBounds();
   var sLat = bounds.getSouthWest().lat();
   var nLat = bounds.getNorthEast().lat();
   if (sLat < -85 || nLat > 85) {
-    console.log("changing zoom")
-    console.log(map.getZoom())
     map.setZoom(map.getZoom() + 1)
-    console.log(map.getZoom())
   }
 }

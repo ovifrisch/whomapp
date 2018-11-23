@@ -3,7 +3,9 @@ var num_open_chats = 0
 
 
 // CLICK USER ON MAP OR CALLED AFTER POLYGON DRAWN (drawing.js)
-function create_conversation(user_ids) {
+function create_conversation(user_ids, positions) {
+  positions = positions.map(positions => [positions.lat(), positions.lng()])
+  console.log(positions)
   if (user_ids.length == 0) {
     $('#cname_modal').modal('hide');
     return
@@ -16,7 +18,6 @@ function create_conversation(user_ids) {
     data: {users: user_ids},
     success: function(valid) {
       if (valid) {
-        console.log("helloooooo")
         $('#cname_modal').modal('show');
         $("#conv_name_field").val("")
         $("#conv_name_field").on("keydown", function(e) {
@@ -27,7 +28,7 @@ function create_conversation(user_ids) {
               url: "chatrooms/create",
               type: "POST",
               dataType:"script",
-              data: {users: user_ids, name: chat_name}
+              data: {users: user_ids, name: chat_name, coords: positions}
             });
           }
         })
@@ -177,6 +178,32 @@ function go_to_user(id) {
   });
 }
 
+function locate_chatroom_on_map(chatroom_id) {
+  $.ajax({
+    url: "chatrooms/get_coordinates",
+    type: "GET",
+    data: {id: chatroom_id},
+    dataType:"json",
+    success: function(poly_coords) {
+      console.log(poly_coords)
+      console.log(poly_coords[0].latitude)
+      //
+      var coords = []
+      for (var i = 0; i < poly_coords.length; i++) {
+        coord = {lat: poly_coords[i].latitude, lng: poly_coords[i].longitude}
+        coords.push(coord)
+      }
+      var polygon = new google.maps.Polygon({
+          path: coords,
+          strokeColor: 'black',
+          strokeOpacity: 0.8,
+          strokeWeight: 2
+        });
+        polygon.setMap(map);
+    }
+  })
+}
+
 function chat_wrapper_active(chat_wrapper_element) {
   if (chat_wrapper_element.html() == "") {
     return false
@@ -188,7 +215,6 @@ function num_open_chat_windows() {
   count = 0
   for (var i = 1; i <= 5; i++) {
     if ($("#chat_wrapper" + i).html() != "") {
-      console.log("pass")
       if ($("#chat_wrapper" + i).children().eq(1).css("visibility") == "visible") {
         count++
       }
