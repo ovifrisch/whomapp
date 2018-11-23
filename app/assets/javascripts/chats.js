@@ -25,6 +25,8 @@ function create_conversation(user_ids, positions, polygon = null) {
           if (polygon != null) {
             polygon.setMap(null)
           }
+          $("#conv_name_field").off("keydown")
+          $("body").off("click")
         })
         $("#conv_name_field").val("")
         $("#conv_name_field").on("keydown", function(e) {
@@ -38,6 +40,7 @@ function create_conversation(user_ids, positions, polygon = null) {
               data: {users: user_ids, name: chat_name, coords: positions}
             });
             fadeOutPolygon(polygon)
+            $("#conv_name_field").off("keydown")
           }
         })
       }
