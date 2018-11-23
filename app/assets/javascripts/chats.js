@@ -185,13 +185,16 @@ function locate_chatroom_on_map(chatroom_id) {
     data: {id: chatroom_id},
     dataType:"json",
     success: function(poly_coords) {
-      console.log(poly_coords)
-      console.log(poly_coords[0].latitude)
-      //
       var coords = []
       for (var i = 0; i < poly_coords.length; i++) {
         coord = {lat: poly_coords[i].latitude, lng: poly_coords[i].longitude}
         coords.push(coord)
+      }
+      console.log(coords)
+      if (coords.length == 1) {
+        map.panTo({lat: coords[0].lat, lng: coords[0].lng})
+        map.setZoom(11)
+        return
       }
 
       var polygon = new google.maps.Polygon({
