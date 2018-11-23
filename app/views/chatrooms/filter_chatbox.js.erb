@@ -1,0 +1,4 @@
+$("#chatbox_chat_wrap").empty()
+<% @filtered_chatrooms.each do |chat| %>
+  $("#chatbox_chat_wrap").append("<%= escape_javascript("#{render 'chatrooms/chatbox_chat', obj: chat}").html_safe%>")
+<% end %>

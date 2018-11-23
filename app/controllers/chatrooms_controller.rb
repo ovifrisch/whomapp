@@ -33,23 +33,27 @@ class ChatroomsController < ApplicationController
     @chatroom.name = chat_name
 
     coordinates = params[:coords]
-    coordinates.each do |coordinate|
-      new_coordinate = Coordinate.new()
-      new_coordinate.position = coordinate[0]
-      new_coordinate.latitude = coordinate[1][0]
-      new_coordinate.longitude = coordinate[1][1]
-      new_coordinate.chatroom = @chatroom
-      new_coordinate.save
+    ActiveRecord::Base.transaction do
+      coordinates.each do |coordinate|
+        new_coordinate = Coordinate.new()
+        new_coordinate.position = coordinate[0]
+        new_coordinate.latitude = coordinate[1][0]
+        new_coordinate.longitude = coordinate[1][1]
+        new_coordinate.chatroom = @chatroom
+        new_coordinate.save!
+      end
     end
 
-    @chatroom.save
+    @chatroom.save!
 
     # ADD EACH USER TO IT
-    user_ids.each do |user_id|
-      chatroom_user = ChatroomUser.new()
-      chatroom_user.user = User.find(user_id)
-      chatroom_user.chatroom = @chatroom
-      chatroom_user.save
+    ActiveRecord::Base.transaction do
+      user_ids.each do |user_id|
+        chatroom_user = ChatroomUser.new()
+        chatroom_user.user = User.find(user_id)
+        chatroom_user.chatroom = @chatroom
+        chatroom_user.save!
+      end
     end
 
     @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
@@ -91,6 +95,10 @@ class ChatroomsController < ApplicationController
     respond_to do |format|
       format.json { render json: Chatroom.find(params[:id]).coordinates }
     end
+  end
+
+  def filter_chatbox
+    @filtered_chatrooms = current_user.chatrooms.where("name LIKE ?", "#{params[:filter]}%")
   end
 
   private
