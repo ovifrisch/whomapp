@@ -1,13 +1,21 @@
 var drawing_manager
 
+function start_drawing() {
+  drawing_manager.setOptions({
+    drawingMode: google.maps.drawing.OverlayType.POLYGON
+  })
+}
+
+function stop_drawing() {
+  drawing_manager.setOptions({
+    drawingMode: null
+  })
+}
+
 function create_drawing_manager() {
   drawing_manager = new google.maps.drawing.DrawingManager({
     drawingMode: null,
     drawingControl: true,
-    drawingControlOptions: {
-            position: google.maps.ControlPosition.BOTTOM_RIGHT,
-            drawingModes: ['polygon']
-          },
     polygonOptions: {
       strokeColor: 'black',
       strokeOpacity: 1.0,

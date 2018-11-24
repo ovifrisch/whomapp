@@ -1,0 +1,31 @@
+
+.options_container {
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  left: 50%;
+  top: 5px;
+}
+
+#draw_btn {
+  position: absolute;
+  width: 46%;
+  height: 80%;
+  left: 0%;
+  background: {
+    image: asset-url('draw_btn.png');
+  }
+  background-size: 100%;
+}
+
+#hand_btn {
+  position: absolute;
+  left: 50%;
+  width: 46%;
+  height: 80%;
+
+  background: {
+    image: asset-url('hand.png');
+  }
+  background-size: 100%;
+}
