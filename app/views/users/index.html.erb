@@ -10,15 +10,23 @@
     <div class="loader"></div>
     <div id="map"></div>
     <button id="all_chat_btn" onclick="open_all_chats()">All Chats</button>
+
+    <!-- ALL CHATS BOX -->
     <div id="all_chats_box">
+
+      <!--  TITLEBAR -->
       <div id="all_chats_titlebar">
         <button id="toggle_all_chat_btn" onclick="toggle_all_chats()">-</button>
       </div>
+
+      <!-- CONTENT -->
       <div id="chatbox_chat_wrap">
         <% @user_chatrooms.each do |chat| %>
           <%= render 'chatrooms/chatbox_chat', obj: chat%>
         <% end %>
       </div>
+
+      <!-- SEARCH FOOTER -->
       <div id="chatbox_search">
         <input type="text" id="chat_search" placeholder="Search">
       </div>

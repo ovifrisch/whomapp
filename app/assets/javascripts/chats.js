@@ -1,5 +1,6 @@
 var max_open_chats = 5
 var num_open_chats = 0
+var chat_start_pos = 250
 
 
 // CLICK USER ON MAP OR CALLED AFTER POLYGON DRAWN (drawing.js)
@@ -59,7 +60,6 @@ function create_conversation(user_ids, positions, polygon = null) {
 
 //CLICK SIDE BAR CHAT
 function chatbox_chat_clicked(el) {
-  chat_wrapper_active($("#chat_wrapper1"))
   id = Number($(el).attr("id").substring(4,))
   if (chatroom_already_opened(id)) {
     if (!chat_window_opened(id)) {
@@ -173,7 +173,7 @@ function get_pixel_position(wrapper) {
   num_left_open = open_wrappers_to_left(wrapper)
   num_left_closed = chatwrap_to_idnum(wrapper) - 1 - num_left_open
   num_left = chatwrap_to_idnum(wrapper)
-  px_pos = 200 + (num_left_open * 200) + (num_left_open * 20) + (num_left_closed * 150) + (num_left_closed * 20)
+  px_pos = chat_start_pos + (num_left_open * 200) + (num_left_open * 20) + (num_left_closed * 150) + (num_left_closed * 20)
   return px_pos
 }
 
