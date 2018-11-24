@@ -12,7 +12,7 @@
 
 .chatbox_chat_name {
   height: 55%;
-  width: 80%;
+  width: 70%;
   overflow-x: hidden;
   text-align: left;
   font-weight: bold;
@@ -40,10 +40,31 @@
 
 .chatbox_chat_num_users {
   position: absolute;
-  height: 100%;
+  height: 80%;
   margin-top: 1px;
   margin-bottom: 1px;
   left: 21px;
   font-size: 12px;
   color: gray;
+}
+
+.eye_inspector {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  width: 20%;
+  height: 70%;
+
+  background: {
+    image: asset-url('eye_closed.png');
+  }
+
+  &:hover {
+    background: {
+      image: asset-url('eye2.png');
+    }
+  }
+
+
+  background-size: 100%;
 }
