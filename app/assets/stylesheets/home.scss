@@ -164,5 +164,37 @@ html, body {
 }
 
 .login_btn {
-  vertical-align: middle;
+  position: absolute;
+  left: 25%;
+  top: 15%;
+  background-color: gray;
+  border: none;
+  color:black;
+
+  &:hover {
+    background-color: gray;
+    color: white;
+  }
+
+  &:active {
+    background-color: #a6a6a6;
+  }
+}
+
+.signup_btn {
+  position: absolute;
+  right: 25%;
+  top: 15%;
+  background-color: gray;
+  border: none;
+  color: black;
+
+  &:hover {
+    background-color: gray;
+    color: white;
+  }
+
+  &:active {
+    background-color: black;
+  }
 }
