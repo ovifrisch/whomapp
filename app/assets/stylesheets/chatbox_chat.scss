@@ -4,28 +4,46 @@
   height: 40px;
   border-bottom: 0.1px solid gray;
   &:hover {
-    background-color: gray;
+    background-color:#d9d9d9;
   }
   cursor: pointer;
 }
 
+
 .chatbox_chat_name {
-  position: absolute;
   height: 55%;
-  overflow-y: hidden;
+  width: 80%;
+  overflow-x: hidden;
   text-align: left;
   font-weight: bold;
   font-size: 16px;
-  left: 10px;
+  margin-left: 10px;
+  top: -3px;
 }
 
-.users_img {
-  position:absolute;
-  right: 0;
-  width: 10%;
-  height: 10%;
+.chatbox_chat_users {
+  position: relative;
+  height: 45%;
+  width: 50%;
+  margin-left: 10px;
+}
+
+.chatbox_chat_users_image {
+  position: absolute;
+  height: 85%;
+  width: 17px;
   background: {
-    image: asset-url('users.png');
+    image: asset-url('users2.ico');
   }
   background-size: 100%;
+}
+
+.chatbox_chat_num_users {
+  position: absolute;
+  height: 100%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  left: 21px;
+  font-size: 12px;
+  color: gray;
 }

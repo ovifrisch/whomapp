@@ -1,9 +1,22 @@
 <!--  obj is a chatroom -->
-<div class="chatbox_chat">
-  <div class="chatbox_chat_name" id="chat<%=obj.id%>" onclick="chatbox_chat_clicked(this)">
-    <%=obj.name%>
+<div class="chatbox_chat" id="chat<%=obj.id%>" onclick="chatbox_chat_clicked(this)">
+
+  <!-- CHATROOM NAME -->
+  <div class="chatbox_chat_name">
+    <%= obj.name %>
   </div>
   <div class="chatbox_chat_users">
+    <!-- USERS IMAGE -->
+    <div class="chatbox_chat_users_image">
+    </div>
 
+    <!-- NUM USERS -->
+    <div class="chatbox_chat_num_users">
+      <%= obj.users.count - 1 %>
+    </div>
+  </div>
+
+  <div class="unread_messages">
+    
   </div>
 </div>
