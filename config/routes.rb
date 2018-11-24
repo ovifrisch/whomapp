@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'users/get_user_locations', to: 'users#get_user_locations'
   get 'users/get_current_user', to: 'users#get_current_user'
   get 'users/get_user_location', to: 'users#get_user_location'
+  get 'about', to: 'pages#about'
+  get 'settings', to: 'pages#settings'
+  get 'help', to: 'pages#help'
 
   devise_for :users
   # devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}

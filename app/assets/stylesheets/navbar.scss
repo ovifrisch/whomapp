@@ -2,3 +2,9 @@
   background-color: #343d46;
   z-index: 1;
 }
+
+.navbar_element {
+  &:hover {
+    color: white !important;
+  }
+}

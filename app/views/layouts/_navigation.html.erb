@@ -5,7 +5,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a id="logo", onclick="panToCurrentUser()">MAP CHAT</a></li>
+        <li class="navbar_element"><a id="logo" class="navbar_element" onclick="panToCurrentUser()">MAP CHAT</a></li>
       </ul>
       <form class="navbar-form navbar-left">
         <input type="text" class="form-control" id="search_loc_field" placeholder="Search US City">
@@ -16,7 +16,10 @@
         <button type="button" class="btn btn-default" id="hand_btn" title="Stop drawing" onclick="stop_drawing()"></button>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+        <li class="navbar_element"><%= link_to "About", about_path, class: "navbar_element"%></li>
+        <li class="navbar_element"><%= link_to "Help", help_path, class: "navbar_element"%></li>
+        <li class="navbar_element"><%= link_to "Settings", settings_path, class: "navbar_element"%></li>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navbar_element" %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
