@@ -21,7 +21,11 @@ function create_conversation(user_ids, positions, polygon = null) {
     data: {users: user_ids},
     success: function(valid) {
       if (valid) {
-        $('#cname_modal').modal('show');
+        $("#cname_modal").on("shown.bs.modal", function () {
+          console.log("focusing...")
+          $("#conv_name_field").focus();
+        }).modal('show');
+
         $("body").on("click", function() {
           if (polygon != null) {
             polygon.setMap(null)

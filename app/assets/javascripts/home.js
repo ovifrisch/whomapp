@@ -133,10 +133,4 @@ $(document).ready(function(){
     map.setZoom(14);
     map.panTo({lat: user_lat, lng: user_long});
   })
-
-  //FOCUS MODAL
-  $('#cname_modal').on('shown.bs.modal', function() {
-    $("#conv_name_field").focus();
-  });
-
 });
