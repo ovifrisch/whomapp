@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
 
   # def require_user
   #   if !logged_in?

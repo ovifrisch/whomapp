@@ -38,3 +38,11 @@
 37575:M 23 Nov 09:02:09.524 * Running mode=standalone, port=6379.
 37575:M 23 Nov 09:02:09.525 # Server initialized
 37575:M 23 Nov 09:02:09.525 * Ready to accept connections
+3456:C 26 Nov 14:00:53.867 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+3456:C 26 Nov 14:00:53.868 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=3456, just started
+3456:C 26 Nov 14:00:53.868 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+3456:M 26 Nov 14:00:53.869 * Increased maximum number of open files to 10032 (it was originally set to 256).
+3456:M 26 Nov 14:00:53.875 * Running mode=standalone, port=6379.
+3456:M 26 Nov 14:00:53.875 # Server initialized
+3456:M 26 Nov 14:00:53.875 * DB loaded from disk: 0.001 seconds
+3456:M 26 Nov 14:00:53.875 * Ready to accept connections

@@ -40,6 +40,7 @@ function create_map() {
   });
 
   google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+    console.log("loaded");
     $(".loader").css("visibility", "hidden")
   });
 
