@@ -7,7 +7,7 @@
   </head>
   <body>
     <%= render 'layouts/navigation'%>
-    <div class="loader"></div>
+    <!-- <div class="loader"></div> -->
     <div id="map"></div>
     <button id="all_chat_btn" onclick="open_all_chats()">All Chats</button>
 
@@ -41,8 +41,9 @@
     </div>
     <div class="chat_wrapper" id="chat_wrapper5">
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMmmqjRIzq8wk25dtNqId-hkqblHkOKs8&libraries=drawing,geometry&callback=initMap"
-    async defer></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMmmqjRIzq8wk25dtNqId-hkqblHkOKs8&libraries=drawing,geometry&callback=initMap"
+type="text/javascript"></script>
 
     <!-- Modal -->
     <div class="modal fade" id="cname_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
