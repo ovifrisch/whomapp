@@ -1,17 +1,27 @@
-var user_lat;
-var user_long;
 var map;
 var current_user_id;
 var markers = [];
+var successful_geolocation = false
+var user_lat = 70
+var user_long = 70
 
 function initMap() {
-  navigator.geolocation.getCurrentPosition(init_position_success);
+  x = navigator.geolocation.getCurrentPosition(init_position_success);
+  if (!successful_geolocation) {
+    console.log("unsuccessful geolocation")
+    initiate()
+  }
 }
 
 function init_position_success(user_position) {
+  successful_geolocation = true
   user_lat = user_position.coords.latitude;
   user_long = user_position.coords.longitude;
   update_current_user_location()
+  initiate()
+}
+
+function initiate() {
   create_map()
   create_drawing_manager()
   set_current_user()
