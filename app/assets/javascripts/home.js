@@ -2,15 +2,39 @@ var map;
 var current_user_id;
 var markers = [];
 var successful_geolocation = false
-var user_lat = 70
-var user_long = 70
+var user_lat = parseFloat(70.1)
+var user_long = parseFloat(70.1)
 
 function initMap() {
-  x = navigator.geolocation.getCurrentPosition(init_position_success);
-  if (!successful_geolocation) {
-    console.log("unsuccessful geolocation")
-    initiate()
+  map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+  infoWindow = new google.maps.InfoWindow;
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log("success")
+    })
   }
+  // console.log(pos)
+  create_drawing_manager()
+  set_current_user()
+  get_all_users_locations() //will also set them in the callback
+  //
+  // if ()
+  //
+  //
+  //
+  // navigator.geolocation.getCurrentPosition(init_position_success, errorCallback, {timeout:10000});
+  // if (!successful_geolocation) {
+  //   console.log("unsuccessful geolocation")
+  //   initiate()
+  // }
+}
+
+function errorCallback() {
+  console.log("error callback")
 }
 
 function init_position_success(user_position) {
@@ -39,6 +63,7 @@ function update_current_user_location() {
 
 
 function create_map() {
+  console.log(user_lat)
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: user_lat, lng: user_long},
     zoom: 14,
@@ -80,11 +105,17 @@ function get_all_users_locations() {
 function set_all_users_locations(locations_hash) {
   for (var i = 0; i < locations_hash.length; i++) {
     marker = pin_at_position(locations_hash[i].id, locations_hash[i].latitude, locations_hash[i].longitude);
+    if (marker == null) {
+      continue
+    }
     markers.push(marker)
   }
 }
 
 function pin_at_position(user_id, latitude, longitude) {
+  if (latitude == null || longitude == null) {
+    return null
+  }
   loc = {lat: latitude, lng: longitude};
   var marker;
 

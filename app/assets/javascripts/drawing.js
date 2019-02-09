@@ -39,6 +39,7 @@ function get_enclosed_markers(polygon) {
   enclosed_markers = []
   for (var i = 0; i < markers.length; i++) {
     m = markers[i]
+    console.log(m)
     if (google.maps.geometry.poly.containsLocation(m.getPosition(), polygon)) {
       enclosed_markers.push(m)
     }
