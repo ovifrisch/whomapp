@@ -2,8 +2,9 @@ var map;
 var current_user_id;
 var markers = [];
 var successful_geolocation = false
-var user_lat = parseFloat(70.1)
-var user_long = parseFloat(70.1)
+var user_lat = 39
+var user_long = -97
+var init_zoom = 4
 
 var options = {
   enableHighAccuracy: true,
@@ -19,9 +20,9 @@ function initMap() {
 
 
 function init_position_success(user_position) {
-  console.log("got it")
   user_lat = user_position.coords.latitude;
   user_long = user_position.coords.longitude;
+  init_zoom = 14
   update_current_user_location()
   initiate()
 }
@@ -46,7 +47,7 @@ function update_current_user_location() {
 function create_map() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: user_lat, lng: user_long},
-    zoom: 14,
+    zoom: init_zoom,
     minZoom: 2,
     zoomControl: false,
     streetViewControl: false,
