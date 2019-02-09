@@ -5,40 +5,21 @@ var successful_geolocation = false
 var user_lat = parseFloat(70.1)
 var user_long = parseFloat(70.1)
 
+var options = {
+  enableHighAccuracy: true,
+  timeout: 1000,
+  maximumAge: 0
+};
+
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 6
-        });
-  infoWindow = new google.maps.InfoWindow;
-
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      console.log("success")
-    })
+    navigator.geolocation.getCurrentPosition(init_position_success, initiate, options);
   }
-  // console.log(pos)
-  create_drawing_manager()
-  set_current_user()
-  get_all_users_locations() //will also set them in the callback
-  //
-  // if ()
-  //
-  //
-  //
-  // navigator.geolocation.getCurrentPosition(init_position_success, errorCallback, {timeout:10000});
-  // if (!successful_geolocation) {
-  //   console.log("unsuccessful geolocation")
-  //   initiate()
-  // }
 }
 
-function errorCallback() {
-  console.log("error callback")
-}
 
 function init_position_success(user_position) {
-  successful_geolocation = true
+  console.log("got it")
   user_lat = user_position.coords.latitude;
   user_long = user_position.coords.longitude;
   update_current_user_location()
@@ -63,7 +44,6 @@ function update_current_user_location() {
 
 
 function create_map() {
-  console.log(user_lat)
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: user_lat, lng: user_long},
     zoom: 14,
