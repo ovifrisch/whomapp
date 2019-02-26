@@ -54,3 +54,16 @@
 2998:M 08 Feb 16:52:15.469 # Server initialized
 2998:M 08 Feb 16:52:15.470 * DB loaded from disk: 0.001 seconds
 2998:M 08 Feb 16:52:15.470 * Ready to accept connections
+2998:signal-handler (1549702376) Received SIGTERM scheduling shutdown...
+2998:M 09 Feb 00:52:56.999 # User requested shutdown...
+2998:M 09 Feb 00:52:57.000 * Saving the final RDB snapshot before exiting.
+2998:M 09 Feb 00:52:57.004 * DB saved on disk
+2998:M 09 Feb 00:52:57.004 # Redis is now ready to exit, bye bye...
+64734:C 25 Feb 18:34:42.427 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+64734:C 25 Feb 18:34:42.429 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=64734, just started
+64734:C 25 Feb 18:34:42.429 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+64734:M 25 Feb 18:34:42.430 * Increased maximum number of open files to 10032 (it was originally set to 256).
+64734:M 25 Feb 18:34:42.434 * Running mode=standalone, port=6379.
+64734:M 25 Feb 18:34:42.434 # Server initialized
+64734:M 25 Feb 18:34:42.434 * DB loaded from disk: 0.001 seconds
+64734:M 25 Feb 18:34:42.434 * Ready to accept connections

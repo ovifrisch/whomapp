@@ -13,6 +13,7 @@ var options = {
 };
 
 function initMap() {
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(init_position_success, initiate, options);
   }
