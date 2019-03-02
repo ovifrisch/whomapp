@@ -13,7 +13,6 @@ var options = {
 };
 
 function initMap() {
-
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(init_position_success, initiate, options);
   }
@@ -21,6 +20,7 @@ function initMap() {
 
 
 function init_position_success(user_position) {
+  console.log("success")
   user_lat = user_position.coords.latitude;
   user_long = user_position.coords.longitude;
   init_zoom = 14

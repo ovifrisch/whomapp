@@ -67,3 +67,8 @@
 64734:M 25 Feb 18:34:42.434 # Server initialized
 64734:M 25 Feb 18:34:42.434 * DB loaded from disk: 0.001 seconds
 64734:M 25 Feb 18:34:42.434 * Ready to accept connections
+78747:C 01 Mar 18:10:30.871 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+78747:C 01 Mar 18:10:30.873 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=78747, just started
+78747:C 01 Mar 18:10:30.873 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+78747:M 01 Mar 18:10:30.874 * Increased maximum number of open files to 10032 (it was originally set to 256).
+78747:M 01 Mar 18:10:30.874 # Creating Server TCP listening socket *:6379: bind: Address already in use
