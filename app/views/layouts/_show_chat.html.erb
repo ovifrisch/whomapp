@@ -22,12 +22,8 @@
     <% end %>
   </div>
   <div class="new_messages_container">
-    <%= form_for [@chatroom, Message.new], remote: true, :html => {:id => "new_message_#{@chatroom.id}"} do |f| %>
+    <%= form_for [@chatroom, Message.new], remote: true, :html => {:id => "new_message_#{@chatroom.id}", :autocomplete => "off"} do |f| %>
       <%= f.text_field :body, :class => "message_field", :id => "message_field_#{@chatroom.id}", rows: 1, placeholder: "Send a message..."%>
     <% end %>
   </div>
 </div>
-
-<!-- <% 1.upto(100) do %>
-  <div><strong><%= @chatroom.users[1].username %>:</strong>Hello world!</div>
-<% end %> -->
