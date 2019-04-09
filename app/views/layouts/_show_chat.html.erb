@@ -2,28 +2,28 @@
 
 <div class="collapse_chat_container">
   <button class="collapse_chat_togggle_open" onclick="open_chat(this)">
-    <%=@chatroom.name%>
+	<%=@chatroom.name%>
   </button>
   <button class="collapse_chat_close" onclick="close_chat(this.parentElement.parentElement)">X</button>
 </div>
 
 <div class="one_chat_open">
   <div class="messages_header">
-    <button class="close_chat_btn" onclick="close_chat(this.parentElement.parentElement.parentElement)">X</button>
-    <button class="toggle_chat_btn" onclick="toggle_chat(this)">-</button>
-    <p class="messages_header_username" onclick="locate_chatroom_on_map(<%= @chatroom.id %>)">
-      <%= @chatroom.name %>
-    </p>
+	<button class="close_chat_btn" onclick="close_chat(this.parentElement.parentElement.parentElement)">X</button>
+	<button class="toggle_chat_btn" onclick="toggle_chat(this)">-</button>
+	<p class="messages_header_username" onclick="locate_chatroom_on_map(<%= @chatroom.id %>)">
+	  <%= @chatroom.name %>
+	</p>
   </div>
 
   <div class="messages_container" id="messages_container_<%= @chatroom.id %>">
-    <% @messages.each do |message|%>
-      <%= render message %>
-    <% end %>
+	<% @messages.each do |message|%>
+	  <%= render message %>
+	<% end %>
   </div>
   <div class="new_messages_container">
-    <%= form_for [@chatroom, Message.new], remote: true, :html => {:id => "new_message_#{@chatroom.id}", :autocomplete => "off"} do |f| %>
-      <%= f.text_field :body, :class => "message_field", :id => "message_field_#{@chatroom.id}", rows: 1, placeholder: "Send a message..."%>
-    <% end %>
+	<%= form_for [@chatroom, Message.new], remote: true, :html => {:id => "new_message_#{@chatroom.id}", :autocomplete => "off"} do |f| %>
+	  <%= f.text_field :body, :class => "message_field", :id => "message_field_#{@chatroom.id}", rows: 1, placeholder: "Send a message..."%>
+	<% end %>
   </div>
 </div>

@@ -72,3 +72,16 @@
 78747:C 01 Mar 18:10:30.873 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
 78747:M 01 Mar 18:10:30.874 * Increased maximum number of open files to 10032 (it was originally set to 256).
 78747:M 01 Mar 18:10:30.874 # Creating Server TCP listening socket *:6379: bind: Address already in use
+64734:signal-handler (1552950822) Received SIGTERM scheduling shutdown...
+64734:M 18 Mar 16:13:42.419 # User requested shutdown...
+64734:M 18 Mar 16:13:42.420 * Saving the final RDB snapshot before exiting.
+64734:M 18 Mar 16:13:42.422 * DB saved on disk
+64734:M 18 Mar 16:13:42.422 # Redis is now ready to exit, bye bye...
+57485:C 09 Apr 00:51:34.289 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+57485:C 09 Apr 00:51:34.291 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=57485, just started
+57485:C 09 Apr 00:51:34.291 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+57485:M 09 Apr 00:51:34.292 * Increased maximum number of open files to 10032 (it was originally set to 256).
+57485:M 09 Apr 00:51:34.297 * Running mode=standalone, port=6379.
+57485:M 09 Apr 00:51:34.297 # Server initialized
+57485:M 09 Apr 00:51:34.297 * DB loaded from disk: 0.000 seconds
+57485:M 09 Apr 00:51:34.297 * Ready to accept connections

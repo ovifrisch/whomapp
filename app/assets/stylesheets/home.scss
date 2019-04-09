@@ -9,7 +9,7 @@
 
 #logo {
   &:hover {
-    cursor: pointer;
+	cursor: pointer;
   }
 }
 
@@ -76,6 +76,11 @@
   bottom: 0px;
   left: 0px;
   z-index: 99;
+  background-color: #96D2F0;
+}
+
+.collapse_chat_togggle_open {
+	background-color: #96D2F0;
 }
 
 .collapse_chat_togggle_open {
@@ -89,6 +94,7 @@
   height: 100%;
   position: absolute;
   right: 0;
+  background-color: #96D2F0;
 }
 
 
@@ -127,7 +133,7 @@
   width: 80%;
 
   &:hover {
-    cursor: pointer;
+	cursor: pointer;
   }
 }
 
@@ -141,6 +147,7 @@
 
 .new_messages_container {
   height: 10%;
+  background-color: #C8E5F3;
 }
 
 .message_field {
@@ -149,6 +156,7 @@
   height: 100%;
   outline: none;
   border: none;
+  background-color: #C8E5F3;
 }
 
 
@@ -174,12 +182,12 @@ html, body {
   color:black;
 
   &:hover {
-    background-color: gray;
-    color: white;
+	background-color: gray;
+	color: white;
   }
 
   &:active {
-    background-color: #a6a6a6;
+	background-color: #a6a6a6;
   }
 }
 
@@ -192,11 +200,11 @@ html, body {
   color: black;
 
   &:hover {
-    background-color: gray;
-    color: white;
+	background-color: gray;
+	color: white;
   }
 
   &:active {
-    background-color: black;
+	background-color: black;
   }
 }
