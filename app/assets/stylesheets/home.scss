@@ -81,6 +81,10 @@
 
 .collapse_chat_togggle_open {
 	background-color: #96D2F0;
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 .collapse_chat_togggle_open {
@@ -95,6 +99,10 @@
   position: absolute;
   right: 0;
   background-color: #96D2F0;
+
+  &:focus {
+	  outline: 0;
+  }
 }
 
 
@@ -157,6 +165,7 @@
   outline: none;
   border: none;
   background-color: #C8E5F3;
+  line-height: 20px;
 }
 
 

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
   resources :chatrooms do
-    resources :messages
+	resources :messages
   end
   root 'pages#home'
   resources :users, except: [:new]

@@ -85,3 +85,47 @@
 57485:M 09 Apr 00:51:34.297 # Server initialized
 57485:M 09 Apr 00:51:34.297 * DB loaded from disk: 0.000 seconds
 57485:M 09 Apr 00:51:34.297 * Ready to accept connections
+73747:C 18 Apr 10:26:03.591 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+73747:C 18 Apr 10:26:03.592 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=73747, just started
+73747:C 18 Apr 10:26:03.592 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+73747:M 18 Apr 10:26:03.593 * Increased maximum number of open files to 10032 (it was originally set to 256).
+73747:M 18 Apr 10:26:03.594 # Creating Server TCP listening socket *:6379: bind: Address already in use
+75251:C 18 Apr 16:55:54.555 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+75251:C 18 Apr 16:55:54.556 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=75251, just started
+75251:C 18 Apr 16:55:54.556 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+75251:M 18 Apr 16:55:54.557 * Increased maximum number of open files to 10032 (it was originally set to 256).
+75251:M 18 Apr 16:55:54.558 # Creating Server TCP listening socket *:6379: bind: Address already in use
+82190:C 22 Apr 16:19:59.221 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+82190:C 22 Apr 16:19:59.222 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=82190, just started
+82190:C 22 Apr 16:19:59.222 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+82190:M 22 Apr 16:19:59.225 * Increased maximum number of open files to 10032 (it was originally set to 256).
+82190:M 22 Apr 16:19:59.226 # Creating Server TCP listening socket *:6379: bind: Address already in use
+57485:signal-handler (1556043298) Received SIGTERM scheduling shutdown...
+57485:M 23 Apr 11:14:58.920 # User requested shutdown...
+57485:M 23 Apr 11:14:58.921 * Saving the final RDB snapshot before exiting.
+57485:M 23 Apr 11:14:58.924 * DB saved on disk
+57485:M 23 Apr 11:14:58.924 # Redis is now ready to exit, bye bye...
+1752:C 08 May 10:03:06.112 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1752:C 08 May 10:03:06.113 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=1752, just started
+1752:C 08 May 10:03:06.113 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1752:M 08 May 10:03:06.114 * Increased maximum number of open files to 10032 (it was originally set to 256).
+1752:M 08 May 10:03:06.117 * Running mode=standalone, port=6379.
+1752:M 08 May 10:03:06.117 # Server initialized
+1752:M 08 May 10:03:06.118 * DB loaded from disk: 0.000 seconds
+1752:M 08 May 10:03:06.118 * Ready to accept connections
+4094:C 08 May 14:58:06.895 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+4094:C 08 May 14:58:06.896 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=4094, just started
+4094:C 08 May 14:58:06.896 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+4094:M 08 May 14:58:06.897 * Increased maximum number of open files to 10032 (it was originally set to 256).
+4094:M 08 May 14:58:06.898 * Running mode=standalone, port=6379.
+4094:M 08 May 14:58:06.898 # Server initialized
+4094:M 08 May 14:58:06.898 * DB loaded from disk: 0.000 seconds
+4094:M 08 May 14:58:06.898 * Ready to accept connections
+7127:C 09 May 10:54:32.970 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+7127:C 09 May 10:54:32.971 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=7127, just started
+7127:C 09 May 10:54:32.971 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+7127:M 09 May 10:54:32.972 * Increased maximum number of open files to 10032 (it was originally set to 256).
+7127:M 09 May 10:54:32.973 * Running mode=standalone, port=6379.
+7127:M 09 May 10:54:32.973 # Server initialized
+7127:M 09 May 10:54:32.974 * DB loaded from disk: 0.000 seconds
+7127:M 09 May 10:54:32.974 * Ready to accept connections
