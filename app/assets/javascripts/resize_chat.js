@@ -6,8 +6,6 @@ $(document).ready(function() {
 		$(this).attr('rows', Math.min(3, numberOfLines));
 
 		if (numberOfLines == 1) {
-			console.log($(this).parent().parent())
-			console.log($(this).parent().parent().parent().children().eq(1))
 			$(this).parent().parent().height("10%");
 			$(this).parent().parent().parent().children().eq(1).height("80%");
 		}
