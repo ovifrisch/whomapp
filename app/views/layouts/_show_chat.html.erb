@@ -22,7 +22,7 @@
 	<% end %>
   </div>
   <div class="new_messages_container", id="new_messages_container_<%= @chatroom.id %>">
-	<%= form_for [@chatroom, Message.new], :format => :js, authenticity_token: true, remote: true, :html => {:id => "new_message_#{@chatroom.id}", :autocomplete => "off"} do |f| %>
+	<%= form_for [@chatroom, Message.new], remote: true, :html => {:id => "new_message_#{@chatroom.id}", :autocomplete => "off"} do |f| %>
 	  <%= f.text_area :body, :class => "message_field", :id => "message_field_#{@chatroom.id}", rows: 1, placeholder: "Send a message..."%>
 	<% end %>
   </div>

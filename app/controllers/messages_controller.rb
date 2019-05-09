@@ -6,10 +6,6 @@ class MessagesController < ApplicationController
 	message.user = current_user
 	message.save
 	NewMessageRelayJob.perform_later(message)
-
-	respond_to do |format|
-		format.js {render layout: false, content_type: 'text/javascript'}
-	end
   end
 
   private
