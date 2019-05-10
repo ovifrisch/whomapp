@@ -1,3 +1,5 @@
 <%= render :partial => 'show.js.erb'%>
 
 $("#message_field_" + <%= @chatroom.id%>).focus()
+var message_cont = $("#messages_container_" + <%= @chatroom.id%>)
+message_cont.scrollTop(message_cont.prop("scrollHeight"));

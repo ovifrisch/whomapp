@@ -150,7 +150,9 @@
   height: 80%;
   border: 1px solid black;
   overflow-y: scroll;
-	background-color: #C8E5F3;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  background-color: #C8E5F3;
 }
 
 .new_messages_container {
