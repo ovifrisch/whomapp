@@ -79,6 +79,8 @@ function chatbox_chat_clicked(el) {
 	  data: {chat_id: id}
 	})
   }
+
+  // handle scrolling events
 }
 
 // "chat_wrapper3" => 3
@@ -86,8 +88,14 @@ function chatwrap_to_idnum(chatwrap) {
   return Number(chatwrap.attr('id').substr(-1))
 }
 
+// 3 => "chat_wrapper3"
 function idnum_to_chatwrap(idnum) {
   return $("#chat_wrapper" + idnum)
+}
+
+// "messages_container_177" => 177
+function msgcont_to_idnum(msg_cont) {
+	return Number(msg_cont.substring(msg_cont.lastIndexOf('_') + 1));
 }
 
 function chat_window_opened(id) {
@@ -141,6 +149,9 @@ function open_chat(el) {
 
 //CLICK CLOSE IN CHAT WINDOW
 function close_chat(el) {
+  id_num = msgcont_to_idnum($(el).children().eq(1).children().eq(1).attr("id"));
+  message_counts[id_num - 1] = 0;
+
   position = chatwrap_to_idnum($(el))
   open_wdw_visibility = $(el).children().eq(1).css("visibility")
   $(el).empty()

@@ -10,6 +10,7 @@ $(document).ready(function() {
 
 		var msg_cont = $(this).parent().parent().parent().children().eq(1);
 		var txt_cont = $(this).parent().parent();
+		console.log(txt_cont.prop("scrollHeight"))
 
 		if (e && e.keyCode == 13) {
 			adjust_heights(msg_cont, txt_cont, "80%", "10%");

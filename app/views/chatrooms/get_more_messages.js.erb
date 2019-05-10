@@ -1,0 +1,5 @@
+chat_window = $("#messages_container_" + <%= @chatroom.id %>)
+message_counts[<%= @chatroom.id %> - 1] += <%= @messages.count %>
+<% @messages.each do |message| %>
+  chat_window.prepend("<%= j render message%>");
+<% end %>

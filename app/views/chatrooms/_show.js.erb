@@ -1,7 +1,27 @@
 if (num_open_chats < max_open_chats) {
+  // render the chat
   wrapper = $("#chat_wrapper" + (num_open_chats + 1))
   wrapper.append("<%= escape_javascript("#{render 'layouts/show_chat'}").html_safe%>");
   wrapper.css("visibility", "visible");
   append_to_end(wrapper)
   num_open_chats += 1;
+
+  // update the client side message count array (used for dynamically adding messages on the fly)
+  message_counts[<%= @chatroom.id %> - 1] += <%= @messages.count %>
+  console.log(message_counts)
+
+  // attach event listener to scroll events
+  $(".messages_container").on("scroll", function() {
+	  // check if scrolled all the way to top
+	  if ($(this).prop("scrollTop") == 0) {
+		  // send ajax request for more messages (if any)
+		  console.log("step 1")
+		  $.ajax({
+			url: "chatrooms/get_more_messages",
+			type: "GET",
+			dataType: "script",
+			data: {chatroom_id: <%= @chatroom.id %>, messages_displayed: message_counts[msgcont_to_idnum($(this).attr("id")) - 1]}
+		  })
+	  }
+  })
 }

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'chatrooms/show_chatroom_given_users', to: "chatrooms#show_chatroom_given_users"
   get 'chatrooms/get_coordinates', to: "chatrooms#get_coordinates"
   get 'chatrooms/filter_chatbox', to: "chatrooms#filter_chatbox"
+  get 'chatrooms/get_more_messages', to: "chatrooms#get_more_messages"
 
   get 'users/get_user_locations', to: 'users#get_user_locations'
   get 'users/get_current_user', to: 'users#get_current_user'
