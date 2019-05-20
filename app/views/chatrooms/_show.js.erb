@@ -9,6 +9,7 @@ if (num_open_chats < max_open_chats) {
   // update the client side message count array (used for dynamically adding messages on the fly)
   message_counts[<%= @chatroom.id %> - 1] += <%= @messages.count %>
   console.log(message_counts)
+  console.log("hello")
 
   // attach event listener to scroll events
   $(".messages_container").on("scroll", function() {

@@ -20,6 +20,7 @@ function received_logic(data) {
 
   // CHAT WINDOW OPEN, SO APPENDss
   if (chat_window.length > 0) {
+
 	chat_window.append(data.message)
 	chat_window.scrollTop(chat_window.prop("scrollHeight"));
   }

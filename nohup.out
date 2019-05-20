@@ -129,3 +129,24 @@
 7127:M 09 May 10:54:32.973 # Server initialized
 7127:M 09 May 10:54:32.974 * DB loaded from disk: 0.000 seconds
 7127:M 09 May 10:54:32.974 * Ready to accept connections
+14262:C 10 May 10:39:24.437 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+14262:C 10 May 10:39:24.438 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=14262, just started
+14262:C 10 May 10:39:24.438 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+14262:M 10 May 10:39:24.439 * Increased maximum number of open files to 10032 (it was originally set to 256).
+14262:M 10 May 10:39:24.442 * Running mode=standalone, port=6379.
+14262:M 10 May 10:39:24.442 # Server initialized
+14262:M 10 May 10:39:24.443 * DB loaded from disk: 0.001 seconds
+14262:M 10 May 10:39:24.443 * Ready to accept connections
+14262:signal-handler (1557513835) Received SIGTERM scheduling shutdown...
+14262:M 10 May 11:43:55.337 # User requested shutdown...
+14262:M 10 May 11:43:55.337 * Saving the final RDB snapshot before exiting.
+14262:M 10 May 11:43:55.340 * DB saved on disk
+14262:M 10 May 11:43:55.340 # Redis is now ready to exit, bye bye...
+67118:C 19 May 15:09:16.221 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+67118:C 19 May 15:09:16.223 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=67118, just started
+67118:C 19 May 15:09:16.223 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+67118:M 19 May 15:09:16.224 * Increased maximum number of open files to 10032 (it was originally set to 256).
+67118:M 19 May 15:09:16.227 * Running mode=standalone, port=6379.
+67118:M 19 May 15:09:16.227 # Server initialized
+67118:M 19 May 15:09:16.228 * DB loaded from disk: 0.000 seconds
+67118:M 19 May 15:09:16.228 * Ready to accept connections

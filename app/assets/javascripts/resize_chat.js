@@ -13,21 +13,21 @@ $(document).ready(function() {
 		console.log(txt_cont.prop("scrollHeight"))
 
 		if (e && e.keyCode == 13) {
-			adjust_heights(msg_cont, txt_cont, "80%", "10%");
+			adjust_heights(msg_cont, txt_cont, "78%", "10%");
 			return;
 		}
 		numberOfLines = Math.floor($(this).prop("scrollHeight") / 20);
 		$(this).attr('rows', Math.min(3, numberOfLines));
 
 		if (numberOfLines == 1) {
-			adjust_heights(msg_cont, txt_cont, "80%", "10%");
+			adjust_heights(msg_cont, txt_cont, "78%", "10%");
 		}
 
 		else if (numberOfLines == 2) {
-			adjust_heights(msg_cont, txt_cont, "70%", "20%");
+			adjust_heights(msg_cont, txt_cont, "68%", "20%");
 		}
 		else {
-			adjust_heights(msg_cont, txt_cont, "60%", "30%");
+			adjust_heights(msg_cont, txt_cont, "58%", "30%");
 		}
 	})
 });

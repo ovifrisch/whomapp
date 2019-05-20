@@ -7,13 +7,14 @@
   top: 5px;
 }
 
+
 #draw_btn {
   position: absolute;
   width: 46%;
   height: 80%;
   left: 0%;
   background: {
-    image: asset-url('draw_btn.png');
+	image: asset-url('draw_btn.png');
   }
   background-size: 100%;
 }
@@ -25,7 +26,7 @@
   height: 80%;
 
   background: {
-    image: asset-url('hand.png');
+	image: asset-url('hand.png');
   }
   background-size: 100%;
 }

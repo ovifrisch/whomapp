@@ -14,6 +14,8 @@ function create_conversation(user_ids, positions, polygon = null) {
 	return
   }
 
+  message_counts.push(0);
+
   $.ajax({
 	url: "chatrooms/validate_chatroom",
 	type: "GET",
@@ -22,7 +24,6 @@ function create_conversation(user_ids, positions, polygon = null) {
 	success: function(valid) {
 	  if (valid) {
 		$("#cname_modal").on("shown.bs.modal", function () {
-		  console.log("focusing...")
 		  $("#conv_name_field").focus();
 		}).modal('show');
 
@@ -212,7 +213,7 @@ function locate_chatroom_on_map(chatroom_id) {
 	data: {id: chatroom_id},
 	dataType:"json",
 	success: function(poly_coords) {
-	  console.log(poly_coords)
+	  console.log(poly_coords.length)
 	  var coords = []
 	  for (var i = 0; i < poly_coords.length; i++) {
 		coord = {lat: parseFloat(poly_coords[i].latitude), lng: parseFloat(poly_coords[i].longitude)}
@@ -247,6 +248,7 @@ function fadeOutPolygon(polygon) {
   if (polygon == null) {
 	return
   }
+  console.log("hey!")
   var fadeout = setInterval(function() {
 	var stroke = polygon.strokeOpacity/30
 	if (polygon.strokeOpacity <= 0) {
