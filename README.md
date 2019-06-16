@@ -1,24 +1,5 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## A web application that provdies a framework for visualizing who you are talking to.
+## At its core, we have a Google Map overlayed on a Ruby on Rails application framework.
+## The site allows you to draw a region on the map and chat with MapChat users in that area.
+## Once a conversation is created, you can later visualize which area on the map is associated with that conversation
